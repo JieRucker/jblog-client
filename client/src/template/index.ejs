@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+ <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <meta name="theme-color" content="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= htmlWebpackPlugin.options.appleTouchIcon %>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.options.ico %>">
+  <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.family %>">
+  <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.options.iconfont %>">
+  <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.css[0] %>">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+<div id="app"></div>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.vendor %>"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[1] %>"></script>
+
+</body>
+
+</html>
+
