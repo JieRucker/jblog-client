@@ -147,11 +147,11 @@
     renderer: new marked.Renderer(),
     gfm: true,
     tables: true,
-    breaks: false,
-    pedantic: false,
+    breaks: true,
+    pedantic: true,
     sanitize: false,
     smartLists: true,
-    smartypants: false
+    smartypants: true
   });
 
   export default {
@@ -190,7 +190,7 @@
           this.article.day = this.formate(a.article_create_time, 2)[2];
           this.article.create_time = this.formate(a.article_create_time, 1);
           this.article.update_time = a.article_update_time;
-          this.article.content = marked(a.article_content);
+          this.article.content = marked(a.article_render_content);
           this.article.navigation_list = a.article_navigation;
           this.article.tag_list = a.article_tags;
         }

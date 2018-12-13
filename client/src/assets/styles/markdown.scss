@@ -89,7 +89,7 @@
     overflow-x: auto
   }
 
-  pre > code {
+  pre > div > code {
     font-size: 1rem;
     padding: .67rem 1.3rem;
     margin: 0;
@@ -155,7 +155,7 @@
     margin-top: .27rem
   }
 
-  pre > code {
+  pre > div > code {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     color: #333;
@@ -328,16 +328,16 @@
     line-height: 1.75
   }
 
-  pre > code {
+  pre > div > code {
     padding: 15px 12px;
     font-size: 11px
   }
 
-  pre > code.hljs[lang] {
+  pre > div > code.hljs[lang] {
     padding: 18px 15px 12px
   }
 
-  pre > code.hljs[lang]:before {
+  pre > div > code.hljs[lang]:before {
     content: attr(lang);
     position: absolute;
     right: 15px;
@@ -345,11 +345,11 @@
     color: hsla(0, 0%, 55%, .8)
   }
 
-  pre > code.hljs[lang][lang=bash]:before {
+  pre > div > code.hljs[lang][lang=bash]:before {
     content: ""
   }
 
-  pre > code.copyable .copy-code-btn {
+  pre > div > code.copyable .copy-code-btn {
     position: absolute;
     top: 6px;
     right: 15px;
@@ -360,11 +360,11 @@
     transition: color .1s
   }
 
-  pre > code.copyable .copy-code-btn:hover {
+  pre > div > code.copyable .copy-code-btn:hover {
     color: #8c8c8c
   }
 
-  pre > code.copyable.hljs[lang]:before {
+  pre > div > code.copyable.hljs[lang]:before {
     right: 70px
   }
 
@@ -432,15 +432,15 @@
       font-size: 18px
     }
 
-    pre > code .copy-code-btn {
+    pre > div > code .copy-code-btn {
       display: none
     }
 
-    pre > code.hljs[lang]:before {
+    pre > div > code.hljs[lang]:before {
       top: 2px;
       right: 15px
     }
-    pre > code.copyable.hljs[lang]:before {
+    pre > div > code.copyable.hljs[lang]:before {
       right: 1rem
     }
   }

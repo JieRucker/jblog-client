@@ -22,7 +22,7 @@
   <div class="post-toc">
     <ol class="nav">
       <li class="item" v-for="(item,index) in get_navigation_list">
-        <a class="link" :href="item.id">
+        <a class="link" href="javascript:;" @click="scrollTo(item.id)">
           <span class="number">{{index + 1}}.</span>
           <span class="text">{{item.name}}</span>
         </a>
@@ -53,6 +53,27 @@
             href: '#2'
           }
         ]
+      }
+    },
+    methods: {
+      scrollTo(id) {
+        let header = document.querySelector('#header');
+        let elem = document.querySelector(`#${id}`);
+        let offsetHeight = 0;
+        let offsetTop = 0;
+        if (header) {
+          offsetHeight = header.offsetHeight;
+        }
+
+        if (elem) {
+          offsetTop = elem.offsetTop;
+        }
+
+        let top = offsetHeight + offsetTop;
+
+        console.log(top);
+
+        window.scrollTo(0, top);
       }
     }
   }
