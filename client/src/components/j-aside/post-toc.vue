@@ -41,38 +41,15 @@
         'get_navigation_list',
       ]),
     },
-    data() {
-      return {
-        toc_list: [
-          {
-            value: '前言',
-            href: '#1'
-          },
-          {
-            value: '盘点那些难以读懂的命名',
-            href: '#2'
-          }
-        ]
-      }
-    },
     methods: {
       scrollTo(id) {
         let header = document.querySelector('#header');
         let elem = document.querySelector(`#${id}`);
         let offsetHeight = 0;
         let offsetTop = 0;
-        if (header) {
-          offsetHeight = header.offsetHeight;
-        }
-
-        if (elem) {
-          offsetTop = elem.offsetTop;
-        }
-
+        if (header) offsetHeight = header.offsetHeight;
+        if (elem) offsetTop = elem.offsetTop;
         let top = offsetHeight + offsetTop;
-
-        console.log(top);
-
         window.scrollTo(0, top);
       }
     }
