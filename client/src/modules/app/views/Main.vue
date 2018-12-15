@@ -19,6 +19,7 @@
 </template>
 <script>
   // import '@/app/libs/lib-flexible/flexible';
+  import {mapActions} from 'vuex';
   import '@/assets/styles/animate.css';
   import '@/libs/aplayer/APlayer.min.css';
   import '@/libs/aplayer/APlayer.min.js';
@@ -52,11 +53,12 @@
         },
       };
     },
-
     created() {
       this.watchVisibleChange();
+      this.getSetting()
     },
     methods: {
+      ...mapActions(['getSetting']),
       /*监控title变化*/
       watchVisibleChange() {
         let OriginTitile = document.title;

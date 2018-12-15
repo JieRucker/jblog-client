@@ -5,11 +5,13 @@
 
 import articleInterface from './ArticleInterface';
 import tagsInterface from './TagsInterface';
+import settingInterface from './SettingInterface';
 import mainInterface from './MainInterface';
 
 export default {
   articleInterface,
   tagsInterface,
+  settingInterface,
   mainInterface
 }
 

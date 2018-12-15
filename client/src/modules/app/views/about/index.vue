@@ -25,9 +25,8 @@
             max-width: 100%;
           }
         }
-        .item {
+        .description {
           font-size: 14px;
-          margin-bottom: 10px;
         }
       }
     }
@@ -47,30 +46,48 @@
   }
 </style>
 
+<style lang="scss">
+  .main-inner {
+    .posts-about {
+      .body {
+        .description {
+          p {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+</style>
+
 <template>
   <div class="main-inner clearfix">
     <section class="posts-about animated fadeIn">
       <div class="header">关于</div>
       <div class="body">
         <div class="info">
-          <img src="https://jrucker.cn/images/about-fold/about.jpg">
+          <img :src="get_about.picture">
         </div>
-        <p class="item">前端 | bilibili | 掘金 | github</p>
-        <p class="item">建于2017年11月25日</p>
+        <div class="description" v-html="get_about.description"></div>
       </div>
-
     </section>
     <j-aside :show-tabs="false"></j-aside>
   </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
   import jAside from '@/components/j-aside/j-aside';
 
   export default {
     name: "index",
     components: {
       jAside
+    },
+    computed: {
+      ...mapGetters([
+        'get_about'
+      ])
     }
   }
 </script>

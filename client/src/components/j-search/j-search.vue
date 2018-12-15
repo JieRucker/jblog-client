@@ -39,7 +39,7 @@
   <div class="search animated fadeIn" v-if="showSearch" @click="closeMask">
     <input v-focus class="input" placeholder="请输入关键字" v-model="search_key"
            @keyup.enter="search({search_key:search_key})"
-           @click.stop="handleSearch(true)">
+           @click.stop="setHandleSearch(true)">
   </div>
 </template>
 <script>
@@ -65,17 +65,16 @@
       }
     },
     methods: {
-      // ...mapActions(["searchArticles"]),
-      ...mapMutations(['handleSearch']),
+      ...mapMutations({'setHandleSearch': 'SET_HANDLE_SEARCH'}),
       search(params) {
         console.log(params);
         // this.$router.push({ path: '/articles', query: params});
         // this.searchArticles(params)
-        this.handleSearch(false);
+        this.setHandleSearch(false);
         Object.assign(this.$data, this.$options.data())
       },
       closeMask() {
-        this.handleSearch(false);
+        this.setHandleSearch(false);
         Object.assign(this.$data, this.$options.data())
       }
     }

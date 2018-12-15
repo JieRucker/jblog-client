@@ -195,7 +195,7 @@
           this.article.tag_list = a.article_tags;
         }
 
-        this.$store.commit('setNavigationList', this.article.navigation_list);
+        this.$store.commit('SET_NAVIGATION_LIST', this.article.navigation_list);
       },
       formate(date, type) {
         if (!date) return;

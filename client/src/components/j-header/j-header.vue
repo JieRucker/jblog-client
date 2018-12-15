@@ -125,7 +125,7 @@
         <router-link tag="li" :to="{ path: '/tags'}" class="item"><a href="javascript:;">标签</a></router-link>
         <router-link tag="li" :to="{ path: '/about'}" class="item"><a href="javascript:;">关于</a></router-link>
         <li class="item search">
-          <Icon type="search" class="icon" @click="handleSearch(true)"></Icon>
+          <Icon type="search" class="icon" @click="setHandleSearch(true)"></Icon>
         </li>
       </ul>
     </nav>
@@ -141,7 +141,7 @@
 </template>
 
 <script>
-  import {mapState, mapMutations} from 'vuex';
+  import {mapState, mapGetters, mapMutations} from 'vuex';
 
   export default {
     name: "j-header",
@@ -155,9 +155,12 @@
         showHeader: state => state.app.showHeader,
         displayBrand: state => state.app.displayBrand
       }),
+      ...mapGetters([
+        'get_person_info',
+      ]),
       brandStyles() {
         return {
-          backgroundImage: `url(http://blog-image-dev.test.upcdn.net/image/1541689829315.jpg)`
+          backgroundImage: `url(${this.get_person_info.cover})`
         }
       }
     },
@@ -165,7 +168,9 @@
       if (this.showHeader) this.init()
     },
     methods: {
-      ...mapMutations(['handleSearch']),
+      ...mapMutations({
+        'setHandleSearch': 'SET_HANDLE_SEARCH'
+      }),
       init() {
         let paintWave = this.paintWave();
         paintWave();

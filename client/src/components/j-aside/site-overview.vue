@@ -72,17 +72,17 @@
 <template>
   <div class="site-overview">
     <div class="author">
-      <img class="img" src="https://jrucker.cn/images/avatar.png" alt="JRucker">
-      <p class="description">我的博客</p>
+      <img class="img" :src="get_person_info.avatar" alt="JRucker">
+      <p class="description">{{get_person_info.description}}</p>
     </div>
     <div class="links">
-      <a class="item">
+      <a class="item" @click="open(get_person_info.github)">
         <Icon type="social-github"></Icon>
       </a>
-      <a class="item">
+      <a class="item" @click="open(get_person_info.twitter)">
         <Icon type="social-twitter"></Icon>
       </a>
-      <a class="item">
+      <a class="item" @click="open(get_person_info.juejin)">
         <Icon type="social-rss"></Icon>
       </a>
     </div>
@@ -101,7 +101,19 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
+
   export default {
     name: "site-overview",
+    computed: {
+      ...mapGetters([
+        'get_person_info',
+      ]),
+    },
+    methods: {
+      open(href) {
+        window.open(href, '_blank');
+      }
+    }
   }
 </script>
