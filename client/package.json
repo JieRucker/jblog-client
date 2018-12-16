@@ -12,6 +12,7 @@
     "webpack": "webpack --config build/webpack.dll.conf.js"
   },
   "dependencies": {
+    "canvas-nest.js": "^2.0.4",
     "fastclick": "^1.0.6",
     "iview": "^2.8.0",
     "marked": "^0.3.19",

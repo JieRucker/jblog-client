@@ -20,6 +20,7 @@
 <script>
   // import '@/app/libs/lib-flexible/flexible';
   import {mapActions} from 'vuex';
+  import CanvasNest from 'canvas-nest.js';
   import '@/assets/styles/animate.css';
   import '@/libs/aplayer/APlayer.min.css';
   import '@/libs/aplayer/APlayer.min.js';
@@ -57,8 +58,22 @@
       this.watchVisibleChange();
       this.getSetting()
     },
+    mounted() {
+      this.canvasNest()
+    },
     methods: {
       ...mapActions(['getSetting']),
+      canvasNest() {
+        const config = {
+          color: '0,0,255',
+          count: 120,
+          opacity: '0.7',
+          zIndex: '-2'
+        };
+
+        let app = document.querySelector('#app');
+        const canvasNest = new CanvasNest(app, config);
+      },
       /*监控title变化*/
       watchVisibleChange() {
         let OriginTitile = document.title;
