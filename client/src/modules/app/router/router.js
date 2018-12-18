@@ -29,10 +29,17 @@ export const aboutRouter = [{
 }];
 
 export const articleRouter = [{
-  path: 'article/detail',
+  path: 'article-detail',
   name: 'detail',
   title: '文章',
   component: () => import('../views/article/detail.vue'),
+}];
+
+export const tagsDetailRouter = [{
+  path: 'tags-detail',
+  name: 'detail',
+  title: '标签详情',
+  component: () => import('../views/tags/detail.vue'),
 }];
 
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
@@ -45,7 +52,8 @@ export const appRouter = {
     ...archivesRouter,
     ...tagsRouter,
     ...aboutRouter,
-    ...articleRouter
+    ...articleRouter,
+    ...tagsDetailRouter
   ]
 };
 

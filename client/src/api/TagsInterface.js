@@ -10,6 +10,11 @@ class TagsInterface extends BaseModule {
   getTagsList() {
     return this.get(`${this.baseUrl}/api/tags`);
   }
+
+  /*获取标签详情*/
+  getTagsDetail(data = {}) {
+    return this.get(`${this.baseUrl}/api/tags?_id=${data._id}`);
+  }
 }
 
 export default new TagsInterface()

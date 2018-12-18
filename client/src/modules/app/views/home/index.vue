@@ -139,7 +139,7 @@
                 <span class="icon">
                   <Icon type="eye" class="eye"></Icon>
                 </span>
-                <span class="text">阅读 13</span>
+                <span class="text">阅读 {{item.read_num}}</span>
               </span>
           </div>
         </div>
@@ -212,7 +212,7 @@
       },
       detailRouter(id) {
         this.$router.push({
-          path: 'article/detail',
+          path: 'article-detail',
           query: {
             _id: id
           }

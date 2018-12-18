@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
   .main-inner {
-    .posts-archives {
+    .tags-detail {
       float: left;
       width: 772px;
       min-height: 700px;
@@ -25,7 +25,7 @@
 
   @media (max-width: 991px) {
     .main-inner {
-      .posts-archives {
+      .tags-detail {
         width: 100%;
         min-height: auto;
         padding: 25px;
@@ -42,7 +42,7 @@
 
 <template>
   <div class="main-inner clearfix">
-    <section class="posts-archives animated fadeIn">
+    <section class="tags-detail animated fadeIn">
       <archives-panel :archives-list="archivesList" :total="total" @on-click="onClick"></archives-panel>
     </section>
     <j-aside :show-tabs="false"></j-aside>
@@ -54,17 +54,17 @@
   import archivesPanel from '@/components/j-archives/archives-panel';
 
   export default {
-    name: "index",
+    name: "detail",
     components: {
       jAside,
       archivesPanel
     },
     data() {
       return {
-        total: 25,
+        total: 10,
         archivesList: [
           {
-            name: '2011',
+            name: 'javascript',
             list: [
               {
                 date: '10-11',
@@ -77,26 +77,19 @@
                 id: '5c18f2da5a829f4cef40dd00'
               }
             ]
-          },
-          {
-            name: '2012',
-            list: [
-              {
-                date: '10-11',
-                title: '分享个人命名方式',
-                id: '5bfa573fef3cab3051ce965d'
-              },
-              {
-                date: '10-12',
-                title: '分享个人命名方式2',
-                id: '5c18f2da5a829f4cef40dd00l'
-              }
-            ]
           }
         ]
       }
     },
+    mounted() {
+      this.getTagsDetail()
+    },
     methods: {
+      async getTagsDetail() {
+        let res = await this.$api.tagsInterface.getTagsDetail({_id: this.$route.query._id});
+        let {data} = res.data;
+        console.log('data', data)
+      },
       onClick(item) {
         this.$router.push({
           path: 'article-detail',

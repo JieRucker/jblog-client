@@ -26,8 +26,7 @@
             border-bottom: 1px solid #999;
             word-wrap: break-word;
             a {
-              font-size: 22px;
-              color: #795548;
+              color: #555;
               .num {
                 color: #bbb;
                 margin-left: 5px;
@@ -66,7 +65,7 @@
       <div class="cloud-tags">
         <ul class="l-list">
           <li class="item" v-for="item in tags_list">
-            <a href="javascript:;" :style="[{fontSize:item.fontSize},{color:item.color}]">{{item.tags_name}}<span
+            <a href="javascript:;" :style="{fontSize: item.tags_article_num * 2 + 13 + 'px'}" @click="onClick(item)">{{item.tags_name}}<span
               class="num">({{item.tags_article_num}})</span></a>
           </li>
         </ul>
@@ -88,52 +87,6 @@
     data() {
       return {
         tags_list: [],
-        styles_list: [
-          {
-            fontSize: '28px',
-            color: '#484444'
-          },
-          {
-            fontSize: '12px',
-            color: '#cccccc'
-          },
-          {
-            fontSize: '16px',
-            color: '#9d9d9d'
-          },
-          {
-            fontSize: '27px',
-            color: '#5a5959'
-          },
-          {
-            fontSize: '18px',
-            color: '#8e8e8e'
-          },
-          {
-            fontSize: '19px',
-            color: '#7e7e7e'
-          },
-          {
-            fontSize: '21px',
-            color: '#6f6f6f'
-          },
-          {
-            fontSize: '24px',
-            color: '#4f4f4f'
-          },
-          {
-            fontSize: '15px',
-            color: '#adadad'
-          },
-          {
-            fontSize: '25px',
-            color: '#464040'
-          },
-          {
-            fontSize: '13px',
-            color: '#bcbcbc'
-          }
-        ]
       }
     },
     mounted() {
@@ -145,10 +98,7 @@
         let {article_num_list = [], tags_list = []} = res.data.data;
         tags_list.forEach(item => {
           let temp = article_num_list.find(i => i._id === item._id);
-          let index = this.random(0, 10);
-          item.tags_article_num = temp == null ? 0 : temp.count;
-          item.fontSize = this.styles_list[index].fontSize;
-          item.color = this.styles_list[index].color;
+          item.tags_article_num = temp ? temp.count : 0;
         });
 
         this.tags_list = tags_list.sort((a, b) => {
@@ -156,7 +106,14 @@
         });
 
         this.tags_list = tags_list;
-        console.log(this.tags_list)
+      },
+      onClick(item) {
+        this.$router.push({
+          path: 'tags-detail',
+          query: {
+            _id: item._id
+          }
+        })
       },
       random(n, m) {
         let random = Math.floor(Math.random() * (m - n + 1) + n);

@@ -125,7 +125,7 @@
                 <span class="icon">
                   <Icon type="eye" class="eye"></Icon>
                 </span>
-                <span class="text">阅读 13</span>
+                <span class="text">阅读 {{article.read_num}}</span>
               </span>
         </div>
       </header>
@@ -169,7 +169,8 @@
           update_time: '',
           content: '',
           tag_list: [],
-          navigation_list: []
+          navigation_list: [],
+          read_num: 0
         }
       }
     },
@@ -193,6 +194,7 @@
           this.article.content = marked(a.article_render_content);
           this.article.navigation_list = a.article_navigation;
           this.article.tag_list = a.article_tags;
+          this.article.read_num = a.read_num;
         }
 
         this.$store.commit('SET_NAVIGATION_LIST', this.article.navigation_list);
