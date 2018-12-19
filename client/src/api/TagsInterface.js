@@ -13,7 +13,7 @@ class TagsInterface extends BaseModule {
 
   /*获取标签详情*/
   getTagsDetail(data = {}) {
-    return this.get(`${this.baseUrl}/api/tags?_id=${data._id}`);
+    return this.get(`${this.baseUrl}/api/tags?_id=${data._id}&current_page=${data.current_page}&page_size=${data.page_size}`);
   }
 }
 

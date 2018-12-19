@@ -43,7 +43,7 @@
 <template>
   <div class="main-inner clearfix">
     <section class="posts-archives animated fadeIn">
-      <archives-panel :archives-list="archivesList" :total="total" @on-click="onClick"></archives-panel>
+      <archives-panel :archives-list="archives_list" :total="args.total" @on-click="onClick"></archives-panel>
     </section>
     <j-aside :show-tabs="false"></j-aside>
   </div>
@@ -61,42 +61,49 @@
     },
     data() {
       return {
-        total: 25,
-        archivesList: [
-          {
-            name: '2011',
-            list: [
-              {
-                date: '10-11',
-                title: '分享个人命名方式',
-                id: '5bfa573fef3cab3051ce965d'
-              },
-              {
-                date: '10-12',
-                title: '分享个人命名方式2',
-                id: '5c18f2da5a829f4cef40dd00'
-              }
-            ]
-          },
-          {
-            name: '2012',
-            list: [
-              {
-                date: '10-11',
-                title: '分享个人命名方式',
-                id: '5bfa573fef3cab3051ce965d'
-              },
-              {
-                date: '10-12',
-                title: '分享个人命名方式2',
-                id: '5c18f2da5a829f4cef40dd00l'
-              }
-            ]
-          }
-        ]
+        archives_list: [],
+        args: {
+          current_page: 1,
+          page_size: 10,
+          total: 0
+        }
       }
     },
+    mounted() {
+      this.getArchivesList()
+    },
     methods: {
+      async getArchivesList() {
+        this.archives_list.splice(0, this.archives_list.length);
+        let res = await this.$api.archivesInterface.getArchivesList({...this.args});
+        let {code, data} = res.data;
+        if (code === 200) {
+          this.args.total = data.total;
+
+          data.list.forEach(item => {
+            let result = () => {
+              let a = [];
+              item.list.forEach(article => {
+                let date = `${this.$Global.formatDate(article.article_create_time).month}-${this.$Global.formatDate(article.article_create_time).day}`;
+                a.push({
+                  date: date,
+                  title: article.article_title,
+                  id: article._id
+                })
+              });
+
+              return a;
+            };
+
+            let list = result();
+
+            this.archives_list.push({
+              name: item.year,
+              list: list
+            })
+          })
+        }
+      },
       onClick(item) {
         this.$router.push({
           path: 'article-detail',

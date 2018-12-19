@@ -183,13 +183,16 @@
         let {code, data} = res.data;
         if (code === 200 && data.length) {
           let [a] = data;
+          let year = this.$Global.formatDate(a.article_create_time).year;
+          let month = this.$Global.formatDate(a.article_create_time).month;
+          let day = this.$Global.formatDate(a.article_create_time).day;
           this.article.title = a.article_title;
           this.article.state = a.article_state;
           this.article.cover = a.article_cover;
           this.article.desc = a.article_desc;
-          this.article.month = this.formate(a.article_create_time, 2)[1];
-          this.article.day = this.formate(a.article_create_time, 2)[2];
-          this.article.create_time = this.formate(a.article_create_time, 1);
+          this.article.month = `${month}`;
+          this.article.day = `${day}`;
+          this.article.create_time = `${year}-${month}-${day}`;
           this.article.update_time = a.article_update_time;
           this.article.content = marked(a.article_render_content);
           this.article.navigation_list = a.article_navigation;
@@ -198,18 +201,7 @@
         }
 
         this.$store.commit('SET_NAVIGATION_LIST', this.article.navigation_list);
-      },
-      formate(date, type) {
-        if (!date) return;
-        switch (type) {
-          case 1:
-            let newDate = /\d{4}-\d{1,2}-\d{1,2}/g.exec(date);
-            return newDate[0];
-          case 2:
-            let matches = date.match(/\d+/g);
-            return matches;
-        }
-      },
+      }
     }
   }
 </script>

@@ -6,12 +6,14 @@
 import articleInterface from './ArticleInterface';
 import tagsInterface from './TagsInterface';
 import settingInterface from './SettingInterface';
+import archivesInterface from './ArchivesInterface';
 import mainInterface from './MainInterface';
 
 export default {
   articleInterface,
   tagsInterface,
   settingInterface,
+  archivesInterface,
   mainInterface
 }
 

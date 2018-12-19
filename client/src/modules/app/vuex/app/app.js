@@ -32,6 +32,8 @@ const state = {
     github: '',
     twitter: '',
     juejin: '',
+    article_num: 0,
+    tags_num: 0
   },
   about: {
     picture: '',
@@ -81,9 +83,13 @@ const mutations = {
     state.navigation_list = payload
   },
   [types.SET_SETTING](state, payload) {
-    let person_info = payload.data.person_info;
-    let about = payload.data.about;
+    let data = payload.data;
+    let info = data.info;
+    let person_info = info.person_info;
+    let about = info.about;
     if (payload) state.person_info = person_info;
+    state.person_info.tags_num = data.tags_num;
+    state.person_info.article_num = data.article_num;
     if (about) {
       state.about.picture = about.picture;
       state.about.description = marked(about.description)

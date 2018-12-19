@@ -190,24 +190,15 @@
         if (code === 200) {
           this.table.body = data.list;
           this.table.body.forEach(item => {
-            item.article_create_time = this.formate(item.article_create_time, 1);
-            item.month = this.formate(item.article_create_time, 2)[1];
-            item.day = this.formate(item.article_create_time, 2)[2];
-          });
-          this.table.args.total_count = data.pagination.total;
+            let year = this.$Global.formatDate(item.article_create_time).year;
+            let month = this.$Global.formatDate(item.article_create_time).month;
+            let day = this.$Global.formatDate(item.article_create_time).day;
 
-          console.log(this.table.body)
-        }
-      },
-      formate(date, type) {
-        if (!date) return;
-        switch (type) {
-          case 1:
-            let newDate = /\d{4}-\d{1,2}-\d{1,2}/g.exec(date);
-            return newDate[0];
-          case 2:
-            let matches = date.match(/\d+/g);
-            return matches;
+            item.article_create_time = `${year}-${month}-${day}`;
+            item.month = `${month}`;
+            item.day = `${day}`;
+          });
+          this.table.args.total_count = data.total;
         }
       },
       detailRouter(id) {

@@ -76,25 +76,25 @@
       <p class="description">{{get_person_info.description}}</p>
     </div>
     <div class="links">
-      <a class="item" @click="open(get_person_info.github)">
+      <a class="item" @click="open_page(get_person_info.github)">
         <Icon type="social-github"></Icon>
       </a>
-      <a class="item" @click="open(get_person_info.twitter)">
+      <a class="item" @click="open_page(get_person_info.twitter)">
         <Icon type="social-twitter"></Icon>
       </a>
-      <a class="item" @click="open(get_person_info.juejin)">
+      <a class="item" @click="open_page(get_person_info.juejin)">
         <Icon type="social-rss"></Icon>
       </a>
     </div>
 
     <nav class="state">
-      <a href="/" class="item posts">
-        <span class="count">25</span>
+      <a href="javascript:;" class="item posts" @click="open_archives">
+        <span class="count">{{get_person_info.article_num}}</span>
         <span class="name">日志</span>
       </a>
-      <a href="/" class="item categories">
-        <span class="count">7</span>
-        <span class="name">分类</span>
+      <a href="javascript:;" class="item categories" @click="open_tags">
+        <span class="count">{{get_person_info.tags_num}}</span>
+        <span class="name">标签</span>
       </a>
     </nav>
   </div>
@@ -111,8 +111,18 @@
       ]),
     },
     methods: {
-      open(href) {
+      open_page(href) {
         window.open(href, '_blank');
+      },
+      open_archives() {
+        this.$router.push({
+          path: 'archives'
+        })
+      },
+      open_tags() {
+        this.$router.push({
+          path: 'tags'
+        })
       }
     }
   }

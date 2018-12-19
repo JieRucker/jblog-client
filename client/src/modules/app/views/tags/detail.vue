@@ -43,7 +43,7 @@
 <template>
   <div class="main-inner clearfix">
     <section class="tags-detail animated fadeIn">
-      <archives-panel :archives-list="archivesList" :total="total" @on-click="onClick"></archives-panel>
+      <archives-panel :archives-list="tags_list" :total="args.total" @on-click="onClick"></archives-panel>
     </section>
     <j-aside :show-tabs="false"></j-aside>
   </div>
@@ -61,24 +61,12 @@
     },
     data() {
       return {
-        total: 10,
-        archivesList: [
-          {
-            name: 'javascript',
-            list: [
-              {
-                date: '10-11',
-                title: '分享个人命名方式',
-                id: '5bfa573fef3cab3051ce965d'
-              },
-              {
-                date: '10-12',
-                title: '分享个人命名方式2',
-                id: '5c18f2da5a829f4cef40dd00'
-              }
-            ]
-          }
-        ]
+        tags_list: [],
+        args: {
+          current_page: 1,
+          page_size: 10,
+          total: 0
+        }
       }
     },
     mounted() {
@@ -86,9 +74,32 @@
     },
     methods: {
       async getTagsDetail() {
-        let res = await this.$api.tagsInterface.getTagsDetail({_id: this.$route.query._id});
-        let {data} = res.data;
-        console.log('data', data)
+        let res = await this.$api.tagsInterface.getTagsDetail({_id: this.$route.query._id, ...this.args});
+        let {code, data} = res.data;
+        if (code === 200) {
+          this.args.total = data.total;
+
+          let result = () => {
+            let a = [];
+            data.list.forEach(article => {
+              let date = `${this.$Global.formatDate(article.article_create_time).month}-${this.$Global.formatDate(article.article_create_time).day}`;
+              a.push({
+                date: date,
+                title: article.article_title,
+                id: article._id
+              })
+            });
+
+            return a;
+          };
+
+          let list = result();
+
+          this.tags_list = [{
+            name: data.tags_name,
+            list: list
+          }]
+        }
       },
       onClick(item) {
         this.$router.push({

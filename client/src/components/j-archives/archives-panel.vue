@@ -91,7 +91,7 @@
 
 <template>
   <div class="archives-panel">
-    <div class="counter"><span class="total">目前共计 {{total}} 篇日志。</span></div>
+    <div class="counter"><span class="total">当前共计 {{total}} 篇日志。</span></div>
     <div v-for="item in archivesList">
       <div class="collection-title">
         <h1 class="year">{{item.name}}</h1>

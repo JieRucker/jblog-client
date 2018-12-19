@@ -36,6 +36,27 @@ export default {
       if (typeof ret !== "undefined" && (ret == null || !ret)) break;
     }
   },
+  formatDate(date) {
+    if (!date) return;
+    let d = new Date(date);
+    let year = d.getFullYear(),
+      month = d.getMonth() + 1,
+      day = d.getDate(),
+      hour = d.getHours(),
+      minute = d.getMinutes(),
+      second = d.getSeconds();
+
+    let prefix = Array.apply(null, Array(10)).map((elem, index) => '0' + index);
+
+    return {
+      year: year,
+      month: prefix[month] || month,
+      day: prefix[day] || day,
+      hour: prefix[hour] || hour,
+      minute: prefix[minute] || minute,
+      second: prefix[second] || second,
+    }
+  },
   VueDB() {
     return new VueDB()
   },
