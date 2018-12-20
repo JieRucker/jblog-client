@@ -10,13 +10,26 @@ import VueI18n from 'vue-i18n';
 import wyboot from '@/libs/wyboot';
 import api from '@/api/server';
 import jDynamic from '@/components/j-dynamic';
+import LoadingScroll from '@/directive/loading-scroll';
 
-Vue.use(VueI18n);
-Vue.use(iView);
+const API = {
+  VueI18n,
+  iView,
+  LoadingScroll
+};
 
-Vue.prototype.$api = api;
-Vue.prototype.$Global = wyboot;
-Vue.prototype.$jDynamic = jDynamic;
+const install = function (Vue, opts = {}) {
+  if (install.installed) return;
+  Vue.use(opts.VueI18n);
+  Vue.use(opts.iView);
+  Vue.directive('loading-scroll', opts.LoadingScroll);
+
+  Vue.prototype.$api = api;
+  Vue.prototype.$Global = wyboot;
+  Vue.prototype.$jDynamic = jDynamic;
+};
+
+install(Vue, API);
 
 new Vue({
   el: '#app',
@@ -25,7 +38,7 @@ new Vue({
   render: h => h(App)
 });
 
-Vue.directive('scrollShow', {
+/*Vue.directive('scrollShow', {
   bind: el => {
     window.addEventListener('scroll', () => {
       let actualTop = el.offsetTop,
@@ -45,4 +58,4 @@ Vue.directive('focus', {
   inserted: function (el) {
     el.focus()
   }
-});
+});*/
