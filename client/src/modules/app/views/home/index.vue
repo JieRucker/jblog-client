@@ -168,14 +168,18 @@
           body: [],
           args: {
             current_page: 1,
-            page_size: 10,
-            total_count: 0
+            page_size: 4,
           }
-        }
+        },
+        more: true /*是否正在加载过程中*/
       }
     },
+    created() {
+      this.getArticleList()
+    },
     mounted() {
-      this.getArticleList();
+      this.loadMore = this.debounce(this.loadMore, 300);
+      window.addEventListener('scroll', this.loadMore, false);
     },
     methods: {
       async getArticleList() {
@@ -188,8 +192,7 @@
         let res = await this.$api.articleInterface.getArticleList({...a, ...this.table.args});
         let {code, data = {}} = res.data;
         if (code === 200) {
-          this.table.body = data.list;
-          this.table.body.forEach(item => {
+          data.list.forEach(item => {
             let year = this.$Global.formatDate(item.article_create_time).year;
             let month = this.$Global.formatDate(item.article_create_time).month;
             let day = this.$Global.formatDate(item.article_create_time).day;
@@ -198,7 +201,41 @@
             item.month = `${month}`;
             item.day = `${day}`;
           });
-          this.table.args.total_count = data.total;
+
+          data.list.forEach(item => {
+            this.table.body.push(item)
+          });
+
+          this.table.args.current_page = ++this.table.args.current_page;
+
+          let totalPage = Math.ceil(data.total / this.table.args.page_size);
+          if (this.table.args.current_page > totalPage) {
+            this.more = false;
+          } else {
+            this.more = true;
+          }
+        }
+      },
+      loadMore() {
+        let html = document.querySelector('html');
+        let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        console.log(html.scrollHeight - scrollTop)
+        if (html.scrollHeight - scrollTop - 204 <= window.innerHeight) {
+          if (this.more) {
+            // this.isLoadingMore = true;
+            this.getArticleList()
+          }
+        }
+      },
+      /*函数去抖*/
+      debounce(fn, delay) {
+        let timer = null;
+        return function () {
+          const context = this, args = arguments;
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn.apply(this, args)
+          }, delay)
         }
       },
       detailRouter(id) {
