@@ -36,6 +36,53 @@ export default {
       if (typeof ret !== "undefined" && (ret == null || !ret)) break;
     }
   },
+  /**
+   * 函数节流
+   * @param func    {Function}   实际要执行的函数
+   * @param wait    {Number}     执行间隔，单位是毫秒（ms），默认100ms
+   *
+   * @return        {Function}   返回一个“节流”函数
+   */
+  throttle(func, wait = 100) {
+    let timer = null;
+    let previous; // 上次执行时间
+    return function () {
+      // 保存函数调用时的上下文和参数，传递给 fn
+      const context = this;
+      const args = arguments;
+      const now = +new Date();
+      if (previous && now < previous + wait) { // 周期之中
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          previous = now;
+          func.apply(context, args);
+        }, wait);
+      } else {
+        previous = now;
+        func.apply(context, args);
+      }
+    };
+  },
+  /**
+   * 函数去抖
+   * @param     fn     {Function}   实际要执行的函数
+   * @param     delay    {Number}     延迟时间，单位是毫秒（ms）
+   * @return    {Function}
+   */
+  debounce(fn, delay = 1000) {
+    let timer;
+    return function () {
+      let context = this;
+      let args = arguments;
+
+      // 清除定时器
+      clearTimeout(timer);
+
+      timer = setTimeout(function () {
+        fn.apply(context, args);
+      }, delay);
+    }
+  },
   formatDate(date) {
     if (!date) return;
     let d = new Date(date);

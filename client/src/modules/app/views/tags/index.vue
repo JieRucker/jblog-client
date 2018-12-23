@@ -61,10 +61,10 @@
 <template>
   <div class="main-inner clearfix">
     <section class="posts-tags animated fadeIn">
-      <div class="counter">目前共计 {{tags_list.length}} 个标签</div>
+      <div class="counter">目前共计 {{get_tags_list.length}} 个标签</div>
       <div class="cloud-tags">
         <ul class="l-list">
-          <li class="item" v-for="item in tags_list">
+          <li class="item" v-for="item in get_tags_list">
             <a href="javascript:;" :style="{fontSize: item.tags_article_num * 2 + 13 + 'px'}" @click="onClick(item)">{{item.tags_name}}<span
               class="num">({{item.tags_article_num}})</span></a>
           </li>
@@ -77,6 +77,9 @@
 </template>
 
 <script>
+  import {createNamespacedHelpers} from 'vuex'
+
+  const {mapState, mapGetters, mapActions, mapMutations} = createNamespacedHelpers('tags');
   import jAside from '@/components/j-aside/j-aside';
 
   export default {
@@ -84,32 +87,20 @@
     components: {
       jAside
     },
-    data() {
-      return {
-        tags_list: [],
-      }
+    computed: {
+      ...mapGetters(['get_tags_list'])
     },
-    mounted() {
+    data() {
+      return {}
+    },
+    created() {
       this.getTagsList()
     },
     methods: {
-      async getTagsList() {
-        let res = await this.$api.tagsInterface.getTagsList();
-        let {article_num_list = [], tags_list = []} = res.data.data;
-        tags_list.forEach(item => {
-          let temp = article_num_list.find(i => i._id === item._id);
-          item.tags_article_num = temp ? temp.count : 0;
-        });
-
-        this.tags_list = tags_list.sort((a, b) => {
-          return a.tags_article_num < b.tags_article_num;
-        });
-
-        this.tags_list = tags_list;
-      },
+      ...mapActions(['getTagsList']),
       onClick(item) {
         this.$router.push({
-          path: 'tags-detail',
+          path: 'articles',
           query: {
             _id: item._id
           }

@@ -8,7 +8,7 @@ class ArchivesInterface extends BaseModule {
 
   /*获取文章列表*/
   getArchivesList(data = {}) {
-    return this.get(`${this.baseUrl}/api/archives?current_page=${data.current_page}&page_size=${data.page_size}`);
+    return this.get(`${this.baseUrl}/api/archives?current_page=${data.current_page}&page_size=${data.page_size}&keyword=${data.keyword ? data.keyword : ''}`);
   }
 }
 

@@ -1,5 +1,12 @@
+/**
+ * @Author: jrucker
+ * @Description
+ * @Date: 2018/12/23 下午3:39
+ * @Last Modified by: jrucker
+ * @Last Modified time: 2018/12/23 下午3:39
+ */
+
 import $api from '@/api/server';
-import {appRouter} from '../../router/router';
 import * as types from '../mutation-types';
 
 let marked = require('marked');
@@ -16,9 +23,6 @@ marked.setOptions({
 
 // state
 const state = {
-  routers: [
-    ...appRouter
-  ],
   showSearch: false, /*搜索*/
   isLoading: false, /*加载显示*/
   showHeader: true, /*显示头部*/
@@ -45,7 +49,8 @@ const state = {
 const getters = {
   get_navigation_list: state => state.navigation_list,
   get_person_info: state => state.person_info,
-  get_about: state => state.about
+  get_about: state => state.about,
+  get_article_list: state => state.article_list
 };
 
 // actions

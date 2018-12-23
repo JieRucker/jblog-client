@@ -6,14 +6,14 @@
       min-height: 700px;
       box-shadow: initial;
       border-radius: initial;
-      .post {
+      article {
         position: relative;
         padding: 25px;
         background: #fff;
         border-radius: 5px;
-        margin-bottom: 25px;
-        &:last-child {
-          margin-bottom: 0;
+        margin-top: 25px;
+        &:first-child {
+          margin-top: 0;
         }
         .date {
           background-color: #97dffd;
@@ -93,10 +93,13 @@
       .posts-expand {
         width: 100%;
         min-height: auto;
-        .post {
+        article {
           padding: 15px;
           border-radius: initial;
-          margin-bottom: 15px;
+          margin-top: 15px;
+          &:first-child {
+            margin-top: 0;
+          }
           .date {
             display: none;
           }
@@ -112,7 +115,7 @@
 <template>
   <div class="main-inner clearfix">
     <section class="posts-expand animated fadeIn">
-      <article class="post" v-for="item in table.body">
+      <article class="post" v-for="(item,index) in get_article_list">
         <div class="date">
           <div class="month">{{item.month}}月</div>
           <div class="day">{{item.day}}</div>
@@ -144,108 +147,76 @@
           </div>
         </div>
       </article>
+
+      <j-scroll :show-loading="show_spinner" :more="more" @on-click="onClick"></j-scroll>
     </section>
     <j-aside :show-tabs="false"></j-aside>
   </div>
 </template>
 
 <script>
+  import {createNamespacedHelpers} from 'vuex'
+  const {mapState, mapGetters, mapActions, mapMutations} = createNamespacedHelpers('home');
   import jAside from '@/components/j-aside/j-aside';
+  import jScroll from '@/components/j-scroll';
 
   export default {
     name: "index",
     components: {
-      jAside
+      jAside,
+      jScroll
+    },
+    computed: {
+      ...mapState({
+        more: state => state.more,
+        show_spinner: state => state.show_spinner
+      }),
+      ...mapGetters(['get_article_list'])
     },
     data() {
       return {
-        search: {
-          keyword: '',
-          tag: -1,
-          state: -1
-        },
-        table: {
-          body: [],
-          args: {
-            current_page: 1,
-            page_size: 4,
-          }
-        },
-        more: true /*是否正在加载过程中*/
+        _loadMore: null
       }
     },
     created() {
+      this.setReset();
       this.getArticleList()
     },
     mounted() {
-      this.loadMore = this.debounce(this.loadMore, 300);
-      window.addEventListener('scroll', this.loadMore, false);
+      this._loadMore = this.$Global.debounce(this.loadMore, 300);
+      window.addEventListener('scroll', this._loadMore, false)
     },
     methods: {
-      async getArticleList() {
-        let a = {
-          keyword: this.search.keyword,
-          tag: this.search.tag === -1 ? '' : this.search.tag,
-          state: this.search.state === -1 ? '' : this.search.state
-        };
-
-        let res = await this.$api.articleInterface.getArticleList({...a, ...this.table.args});
-        let {code, data = {}} = res.data;
-        if (code === 200) {
-          data.list.forEach(item => {
-            let year = this.$Global.formatDate(item.article_create_time).year;
-            let month = this.$Global.formatDate(item.article_create_time).month;
-            let day = this.$Global.formatDate(item.article_create_time).day;
-
-            item.article_create_time = `${year}-${month}-${day}`;
-            item.month = `${month}`;
-            item.day = `${day}`;
-          });
-
-          data.list.forEach(item => {
-            this.table.body.push(item)
-          });
-
-          this.table.args.current_page = ++this.table.args.current_page;
-
-          let totalPage = Math.ceil(data.total / this.table.args.page_size);
-          if (this.table.args.current_page > totalPage) {
-            this.more = false;
-          } else {
-            this.more = true;
-          }
-        }
+      ...mapMutations({
+        setReset: 'SET_RESET',
+        showSpinner: 'SHOW_SPINNER'
+      }),
+      ...mapActions(['getArticleList']),
+      onClick() {
+        this.showSpinner(true);
+        this.getArticleList()
       },
       loadMore() {
         let html = document.querySelector('html');
         let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-        console.log(html.scrollHeight - scrollTop)
         if (html.scrollHeight - scrollTop - 204 <= window.innerHeight) {
           if (this.more) {
-            // this.isLoadingMore = true;
+            this.showSpinner(true);
             this.getArticleList()
           }
         }
       },
-      /*函数去抖*/
-      debounce(fn, delay) {
-        let timer = null;
-        return function () {
-          const context = this, args = arguments;
-          clearTimeout(timer);
-          timer = setTimeout(() => {
-            fn.apply(this, args)
-          }, delay)
-        }
-      },
       detailRouter(id) {
         this.$router.push({
-          path: 'article-detail',
+          path: 'detail',
           query: {
             _id: id
           }
         })
       }
+    },
+    beforeDestroy() {
+      window.removeEventListener('scroll', this._loadMore)
     }
   }
 </script>

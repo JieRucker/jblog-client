@@ -67,9 +67,12 @@
     methods: {
       ...mapMutations({'setHandleSearch': 'SET_HANDLE_SEARCH'}),
       search(params) {
-        console.log(params);
-        // this.$router.push({ path: '/articles', query: params});
-        // this.searchArticles(params)
+        this.$router.push({
+          path: 'archives',
+          query: {
+            keyword: params.search_key
+          }
+        });
         this.setHandleSearch(false);
         Object.assign(this.$data, this.$options.data())
       },

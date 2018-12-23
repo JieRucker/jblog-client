@@ -43,7 +43,6 @@
 
   .post {
     .header {
-      margin-bottom: 20px;
       position: relative;
       transition-duration: .2s;
       transition-timing-function: ease-in-out;

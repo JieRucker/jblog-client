@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
   .main-inner {
-    .posts-article-detail {
+    .posts-detail {
       float: left;
       width: 772px;
       min-height: 700px;
@@ -81,7 +81,7 @@
 
   @media (max-width: 991px) {
     .main-inner {
-      .posts-article-detail {
+      .posts-detail {
         width: 100%;
         min-height: auto;
         padding: 15px;
@@ -98,7 +98,7 @@
 
 <template>
   <div class="main-inner clearfix">
-    <section class="posts-article-detail animated fadeIn">
+    <section class="posts-detail animated fadeIn">
       <div class="date">
         <div class="month">{{article.month}}月</div>
         <div class="day">{{article.day}}</div>

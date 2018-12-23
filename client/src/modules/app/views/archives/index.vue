@@ -43,75 +43,85 @@
 <template>
   <div class="main-inner clearfix">
     <section class="posts-archives animated fadeIn">
-      <archives-panel :archives-list="archives_list" :total="args.total" @on-click="onClick"></archives-panel>
+      <archives-panel :archives-list="get_archives_list" :total="get_total" @on-click="onArticle"></archives-panel>
+      <j-scroll :show-loading="show_spinner" :more="more" @on-click="onClick"></j-scroll>
     </section>
     <j-aside :show-tabs="false"></j-aside>
   </div>
 </template>
 
 <script>
+  import {createNamespacedHelpers} from 'vuex'
+
+  const {mapState, mapGetters, mapActions, mapMutations} = createNamespacedHelpers('archives');
   import jAside from '@/components/j-aside/j-aside';
   import archivesPanel from '@/components/j-archives/archives-panel';
+  import jScroll from '@/components/j-scroll';
 
   export default {
     name: "index",
     components: {
       jAside,
-      archivesPanel
+      archivesPanel,
+      jScroll
+    },
+    computed: {
+      ...mapState({
+        more: state => state.more,
+        show_spinner: state => state.show_spinner
+      }),
+      ...mapGetters(['get_archives_list', 'get_total'])
     },
     data() {
       return {
-        archives_list: [],
-        args: {
-          current_page: 1,
-          page_size: 10,
-          total: 0
-        }
+        _loadMore: null,
+      }
+    },
+    created() {
+      this.setReset();
+      this.getArchivesList({keyword: this.$route.query.keyword ? this.$route.query.keyword : ''})
+    },
+    watch: {
+      '$route'(to) {
+        this.setReset();
+        this.getArchivesList({keyword: this.$route.query.keyword ? this.$route.query.keyword : ''})
       }
     },
     mounted() {
-      this.getArchivesList()
+      this._loadMore = this.$Global.debounce(this.loadMore, 300);
+      window.addEventListener('scroll', this._loadMore, false)
     },
     methods: {
-      async getArchivesList() {
-        this.archives_list.splice(0, this.archives_list.length);
-        let res = await this.$api.archivesInterface.getArchivesList({...this.args});
-        let {code, data} = res.data;
-        if (code === 200) {
-          this.args.total = data.total;
-
-          data.list.forEach(item => {
-            let result = () => {
-              let a = [];
-              item.list.forEach(article => {
-                let date = `${this.$Global.formatDate(article.article_create_time).month}-${this.$Global.formatDate(article.article_create_time).day}`;
-                a.push({
-                  date: date,
-                  title: article.article_title,
-                  id: article._id
-                })
-              });
-
-              return a;
-            };
-
-            let list = result();
-
-            this.archives_list.push({
-              name: item.year,
-              list: list
-            })
-          })
+      ...mapMutations({
+        setReset: 'SET_RESET',
+        showSpinner: 'SHOW_SPINNER'
+      }),
+      ...mapActions(['getArchivesList']),
+      onClick() {
+        this.showSpinner(true);
+        this.getArchivesList()
+      },
+      loadMore() {
+        let html = document.querySelector('html');
+        let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        if (html.scrollHeight - scrollTop - 204 <= window.innerHeight) {
+          if (this.more) {
+            this.showSpinner(true);
+            this.getArchivesList()
+          }
         }
       },
-      onClick(item) {
+      onArticle(item) {
         this.$router.push({
-          path: 'article-detail',
+          path: 'detail',
           query: {
             _id: item.id
           }
         })
       }
+    },
+    beforeDestroy() {
+      window.removeEventListener('scroll', this._loadMore)
     }
   }
 </script>
