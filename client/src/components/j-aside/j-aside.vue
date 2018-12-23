@@ -1,10 +1,12 @@
 <style lang="scss" scoped>
   .sidebar {
     float: right;
-    background: #fff;
-    border-radius: 5px;
-    width: 315px;
-    padding: 20px;
+    .inner {
+      background: #fff;
+      border-radius: 5px;
+      width: 315px;
+      padding: 20px;
+    }
   }
 </style>
 
@@ -26,12 +28,14 @@
 
 <template>
   <aside id="sidebar" class="sidebar animated fadeIn">
-    <Tabs class="tabs" v-model="current_tab" @on-click="onClick" :animated="true" v-if="showTabs">
-      <TabPane :label="item.value" v-for="(item,index) in tab_list" :key="index">
-        <component :is="current_page"></component>
-      </TabPane>
-    </Tabs>
-    <component :is="current_page" v-if="!showTabs"></component>
+    <div class="inner affix">
+      <Tabs class="tabs" v-model="current_tab" @on-click="onClick" :animated="true" v-if="showTabs">
+        <TabPane :label="item.value" v-for="(item,index) in tab_list" :key="index">
+          <component :is="current_page"></component>
+        </TabPane>
+      </Tabs>
+      <component :is="current_page" v-if="!showTabs"></component>
+    </div>
   </aside>
 </template>
 
