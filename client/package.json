@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "target=app npm run dev",
+    "start": "cross-env target=app npm run dev",
     "build": "cross-env env_config=prod node build/build.js",
     "build:dev": "cross-env env_config=prod_dev node build/build.js",
     "webpack": "webpack --config build/webpack.dll.conf.js"
