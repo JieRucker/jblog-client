@@ -172,11 +172,11 @@
         'setHandleSearch': 'SET_HANDLE_SEARCH'
       }),
       init() {
-        let paintWave = this.paintWave();
+        /*let paintWave = this.paintWave();
         paintWave();
         let wave = this.throttle(paintWave, 60);
         const resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
-        window.addEventListener(resizeEvent, wave, false); // 监听窗口resize事件，重绘波浪
+        window.addEventListener(resizeEvent, wave, false); // 监听窗口resize事件，重绘波浪*/
 
         /*判断位置控制 返回顶部的显隐*/
         window.addEventListener('scroll', this.listenScroll, false);

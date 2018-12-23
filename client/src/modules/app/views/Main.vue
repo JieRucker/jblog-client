@@ -59,14 +59,14 @@
       this.getSetting()
     },
     mounted() {
-      this.canvasNest()
+      if (process.env.NODE_ENV === 'production') this.canvasNest()
     },
     methods: {
       ...mapActions(['getSetting']),
       canvasNest() {
         const config = {
           color: '0,0,255',
-          count: 120,
+          count: 80,
           opacity: '0.7',
           zIndex: '-2'
         };
