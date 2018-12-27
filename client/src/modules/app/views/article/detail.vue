@@ -131,7 +131,6 @@
       </header>
 
       <div v-html="article.content" class="article-content"></div>
-
     </section>
     <j-aside current-page="postToc"></j-aside>
   </div>

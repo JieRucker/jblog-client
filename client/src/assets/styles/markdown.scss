@@ -233,8 +233,8 @@
 
   p {
     line-height: inherit;
-    margin-top: 22px;
-    margin-bottom: 22px
+    margin-top: 10px;
+    margin-bottom: 10px
   }
 
   img {
@@ -308,7 +308,7 @@
 
   ol li, ul li {
     margin-bottom: 0;
-    list-style: inherit
+    list-style: outside;
   }
 
   ol li.task-list-item, ul li.task-list-item {
