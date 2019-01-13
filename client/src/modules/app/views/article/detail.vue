@@ -38,6 +38,15 @@
           text-align: center;
           word-break: break-word;
         }
+        .cover {
+          height: 200px;
+          margin-top: 10px;
+          .img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
         .meta {
           color: #999;
           font-size: 12px;
@@ -105,7 +114,6 @@
       </div>
       <header class="header">
         <h1 class="title">{{article.title}}</h1>
-
         <div class="meta">
               <span class="time">
                   <Icon type="ios-calendar-outline" class="calendar"></Icon> 发表 {{article.create_time}}
@@ -127,6 +135,9 @@
                 </span>
                 <span class="text">阅读 {{article.read_num}}</span>
               </span>
+        </div>
+        <div class="cover" v-if="article.cover != ''">
+          <img :src="article.cover" class="img">
         </div>
       </header>
 

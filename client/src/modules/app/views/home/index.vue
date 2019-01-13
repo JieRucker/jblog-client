@@ -41,10 +41,21 @@
             color: #333;
             margin-bottom: 5px;
           }
+          .cover {
+            height: 200px;
+            margin-top: 10px;
+            .img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
           .abstract {
+            margin-top: 10px;
             font-size: 13px;
             line-height: 24px;
             color: #999;
+            display: flex;
           }
           .meta {
             color: #999;
@@ -122,7 +133,12 @@
         </div>
         <div class="body">
           <a class="title" href="javascript:;" @click="detailRouter(item._id)">{{item.article_title}}</a>
-          <p class="abstract">{{item.article_desc}}</p>
+          <div class="cover" v-if="item.article_cover != ''">
+            <img :src="item.article_cover" class="img">
+          </div>
+          <div class="abstract">
+            <p>{{item.article_desc}}</p>
+          </div>
           <div class="meta">
               <span class="time">
                   <Icon type="ios-calendar-outline" class="calendar"></Icon> 发表 {{item.article_create_time}}
@@ -156,6 +172,7 @@
 
 <script>
   import {createNamespacedHelpers} from 'vuex'
+
   const {mapState, mapGetters, mapActions, mapMutations} = createNamespacedHelpers('home');
   import jAside from '@/components/j-aside/j-aside';
   import jScroll from '@/components/j-scroll';
