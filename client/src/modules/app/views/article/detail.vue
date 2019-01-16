@@ -103,6 +103,101 @@
       display: none;
     }
   }
+
+  .comment-list-box {
+    .title {
+      color: #8a9aa9;
+      font-size: 16px;
+      font-weight: 400;
+      text-align: center;
+      padding: 10px 5px;
+      margin-bottom: 10px;
+    }
+    .comment-form {
+      display: flex;
+      padding: 20px 10px;
+      background-color: #fafbfc;
+      border-radius: 3px;
+      .avatar-box {
+        img {
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+    .comment-list {
+      margin-left: 40px;
+      font-size: 13px;
+      .comment {
+        &:not(:first-child) {
+          .content-box .reply-state {
+            margin-bottom: 0;
+          }
+          background-color: #fafbfc;
+        }
+        padding: 10px 0;
+        display: flex;
+        .avatar {
+          img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+          }
+        }
+        .content-box {
+          margin-left: 10px;
+          width: 100%;
+          .meta-box {
+            display: flex;
+            align-items: center;
+            .position {
+              color: #8a9aa9;
+              margin-left: 10px;
+            }
+          }
+          .content {
+            margin-top: 5px;
+            color: #505050;
+          }
+          .reply-state {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 10px 10px 0;
+            .time {
+              color: #8a9aa9;
+            }
+            .action-box {
+              display: flex;
+              color: #8a93a0;
+              .action {
+                margin-left: 40px;
+                cursor: pointer;
+              }
+            }
+          }
+          .reply-input {
+            padding: 10px;
+            background-color: #fafbfc;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+    .fetch-more-comment {
+      padding: 10px 0;
+      font-size: 14px;
+      text-align: center;
+      color: #406599;
+      cursor: pointer;
+    }
+  }
+
+  .editor /deep/ {
+    position: relative;
+    margin-left: 10px;
+    width: 100%;
+  }
 </style>
 
 <template>
@@ -142,6 +237,105 @@
       </header>
 
       <div v-html="article.content" class="article-content"></div>
+
+
+      <div class="comment-list-box">
+        <div class="title">评论</div>
+
+        <div class="comment-form">
+          <div class="avatar-box">
+            <img src="https://user-gold-cdn.xitu.io/2018/8/10/1651f7955556e6b6?imageView2/1/w/100/h/100/q/85/forma"/>
+          </div>
+          <div class="form-box editor">
+            <j-editor v-model="commentContent" ref="jEditor"></j-editor>
+          </div>
+        </div>
+
+        <div class="comment-list">
+          <div class="comment">
+            <div class="avatar">
+              <img
+                src="https://user-gold-cdn.xitu.io/2017/5/31/3f69cfefffd335394c95d0ae25cb40ac?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1"/>
+            </div>
+            <div class="content-box">
+
+              <div class="meta-box">
+                <span class="username">水电费撒风</span>
+                <span class="position">前端工程师 @ 腾讯</span>
+              </div>
+
+              <div class="content">请问如何把豆瓣接口的数据都下载到本地呢？</div>
+
+              <div class="reply-state">
+                <time class="time">1年前</time>
+                <div class="action-box">
+                  <div class="like-action action">点赞</div>
+                  <div class="comment-action action">回复</div>
+                </div>
+              </div>
+
+              <j-editor
+                class="reply-input"
+                v-model="commentContent"
+                ref="jEditor"
+                :focused="true"
+                :action="true"
+                placeholder="回复11">
+              </j-editor>
+
+              <div class="comment">
+                <div class="avatar">
+                  <img
+                    src="https://user-gold-cdn.xitu.io/2017/5/31/3f69cfefffd335394c95d0ae25cb40ac?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1"/>
+                </div>
+                <div class="content-box">
+                  <div class="meta-box">
+                    <span class="username">水电费撒风</span>
+                    <span class="position">前端工程师 @ 腾讯</span>
+                  </div>
+
+                  <div class="content">请问如何把豆瓣接口的数据都下载到本地呢？</div>
+
+                  <div class="reply-state">
+                    <time class="time">1年前</time>
+                    <div class="action-box">
+                      <div class="like-action action">点赞</div>
+                      <div class="comment-action action">回复</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="comment">
+                <div class="avatar">
+                  <img
+                    src="https://user-gold-cdn.xitu.io/2017/5/31/3f69cfefffd335394c95d0ae25cb40ac?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1"/>
+                </div>
+                <div class="content-box">
+                  <div class="meta-box">
+                    <span class="username">水电费撒风</span>
+                    <span class="position">前端工程师 @ 腾讯</span>
+                  </div>
+
+                  <div class="content">请问如何把豆瓣接口的数据都下载到本地呢？</div>
+
+                  <div class="reply-state">
+                    <time class="time">1年前</time>
+                    <div class="action-box">
+                      <div class="like-action action">点赞</div>
+                      <div class="comment-action action">回复</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="fetch-more-comment">查看更多></div>
+      </div>
+
     </section>
     <j-aside current-page="postToc"></j-aside>
   </div>
@@ -151,6 +345,7 @@
 
 <script>
   import jAside from '@/components/j-aside/j-aside';
+  import jEditor from '@/components/j-editor';
 
   let marked = require('marked');
   marked.setOptions({
@@ -167,7 +362,8 @@
   export default {
     name: "detail",
     components: {
-      jAside
+      jAside,
+      jEditor
     },
     data() {
       return {
@@ -181,11 +377,13 @@
           tag_list: [],
           navigation_list: [],
           read_num: 0
-        }
+        },
+        commentContent: ''
       }
     },
     mounted() {
-      this.getArticleById()
+      window.jEditor = this.$refs.jEditor;
+      this.getArticleById();
     },
     methods: {
       async getArticleById() {
