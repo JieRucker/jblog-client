@@ -68,7 +68,7 @@ const serve = (path, cache) => express.static(resolve(path), {
 
 const proxyTable = {
   '/api': {
-    target: isProd ? 'http://api.jrucker.cn' : 'http://localhost:7777',
+    target: 'http://localhost:7777',
     changeOrigin: true
     // pathRewrite: {
     //   '^/api': '/api'
