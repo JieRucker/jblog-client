@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon node server.js",
     "start": "NODE_ENV=production node server.js",
+    "prod": "pm2 start server.js --name jblog-client --watch",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
     "build:server": "NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules"

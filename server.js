@@ -70,9 +70,6 @@ const proxyTable = {
   '/api': {
     target: isProd ? 'http://api.jrucker.cn' : 'http://localhost:7777',
     changeOrigin: true
-    // pathRewrite: {
-    //   '^/api': '/api'
-    // }
   }
 };
 
