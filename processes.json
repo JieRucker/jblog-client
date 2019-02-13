@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "jblog-client",
+      "script": "server.js",
+      "watch": true,
+      "error_file": "logs/jblog-client-err.log",
+      "out_file": "logs/jblog-client-out.log",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
