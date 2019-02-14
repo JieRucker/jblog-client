@@ -26,7 +26,7 @@ module.exports = {
   // context: path.resolve(__dirname, '../'),
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: isProd ? '/' : '/dist/',
+    publicPath: isProd ? 'http://static-client.jrucker.cn/' : '/dist/',
     filename: 'static/js/[name].[chunkhash].js'
   },
   resolve: {
