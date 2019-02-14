@@ -60,8 +60,8 @@ const mutations = {
       let result = () => {
         let a = [];
         item.list.forEach(article => {
-          let month = $Global.formatDate(article.article_create_time).month;
-          let day = $Global.formatDate(article.article_create_time).day;
+          let month = $Global.formatDate(article.article_create_time.replace(/\-/g, "/")).month;
+          let day = $Global.formatDate(article.article_create_time.replace(/\-/g, "/")).day;
           let date = `${month}-${day}`;
           a.push({date: date, title: article.article_title, id: article._id})
         });

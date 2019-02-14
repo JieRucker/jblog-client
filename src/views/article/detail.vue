@@ -611,9 +611,9 @@
         let {code, data} = res.data;
         if (code === 200 && data.length) {
           let [a] = data;
-          let year = this.$Global.formatDate(a.article_create_time).year;
-          let month = this.$Global.formatDate(a.article_create_time).month;
-          let day = this.$Global.formatDate(a.article_create_time).day;
+          let year = this.$Global.formatDate(a.article_create_time.replace(/\-/g, "/")).year;
+          let month = this.$Global.formatDate(a.article_create_time.replace(/\-/g, "/")).month;
+          let day = this.$Global.formatDate(a.article_create_time.replace(/\-/g, "/")).day;
           this.article.title = a.article_title;
           this.article.state = a.article_state;
           this.article.cover = a.article_cover;

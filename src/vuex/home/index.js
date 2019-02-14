@@ -40,9 +40,9 @@ const actions = {
     let {code, data = {}} = res.data;
     if (code === 200) {
       data.list.forEach(item => {
-        let year = $Global.formatDate(item.article_create_time).year;
-        let month = $Global.formatDate(item.article_create_time).month;
-        let day = $Global.formatDate(item.article_create_time).day;
+        let year = $Global.formatDate(item.article_create_time.replace(/\-/g, "/")).year;
+        let month = $Global.formatDate(item.article_create_time.replace(/\-/g, "/")).month;
+        let day = $Global.formatDate(item.article_create_time.replace(/\-/g, "/")).day;
 
         item.article_create_time = `${year}-${month}-${day}`;
         item.month = `${month}`;
