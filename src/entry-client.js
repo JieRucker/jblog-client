@@ -69,5 +69,5 @@ function isLocalhost() {
   return /^http(s)?:\/\/localhost/.test(location.href);
 }
 if (('https:' === location.protocol || isLocalhost()) && navigator.serviceWorker) {
-  navigator.serviceWorker.register('/static/service-worker.js')
+  // navigator.serviceWorker.register('/static/service-worker.js')
 }
