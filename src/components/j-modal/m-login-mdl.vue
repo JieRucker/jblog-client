@@ -79,6 +79,7 @@
         setUserInfo: 'app/SET_USER_INFO'
       }),
       openQQ() {
+        let common_url = process.env.api.common_url;
         window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101454722&response_type=token&scope=all&redirect_uri=http://api.jrucker.cn/qq/oauth/callback', 'oauth2Login_10000' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
       },
       openGithub() {
