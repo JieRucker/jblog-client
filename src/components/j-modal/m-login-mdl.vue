@@ -80,10 +80,10 @@
       }),
       openQQ() {
         let common_url = process.env.api.common_url;
-        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101454722&response_type=token&scope=all&redirect_uri=http://api.jrucker.cn/qq/oauth/callback', 'oauth2Login_10000' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101454722&response_type=token&scope=all&redirect_uri=http://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
       },
       openGithub() {
-        let auth = window.open("http://api.jrucker.cn/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
+        let auth = window.open("http://www.jrucker.cn/api/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
         let timer = setInterval(async () => {
 
           //检测打开的窗口是否关闭

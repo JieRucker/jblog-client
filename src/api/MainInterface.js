@@ -13,7 +13,7 @@ class MainInterface extends BaseModule {
 
   /*获取github用户信息*/
   getUser(data = {}) {
-    return this.get(`${this.baseUrl}/github/user?id=${data.visitor_id}`);
+    return this.get(`${this.baseUrl}/api/github/user?id=${data.visitor_id}`);
   }
 
   /*注册用户*/
