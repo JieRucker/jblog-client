@@ -43,9 +43,9 @@
     data: () => ({
       CONFIG: {
         favicon: {
-          hidden: "https://jrucker.cn/images/failure.ico",
+          hidden: "https://www.jrucker.cn/static/images/logo/logo-48.png",
           hide_text: "JRucker 博客！",
-          narmal: "https://jrucker.cn/images/favicon.ico",
+          narmal: "https://www.jrucker.cn/static/images/logo/logo-48.png",
           show_text: "JRucker 博客！"
         }
       },
