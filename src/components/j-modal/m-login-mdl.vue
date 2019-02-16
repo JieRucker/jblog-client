@@ -63,7 +63,7 @@
   import {mapMutations, mapGetters} from 'vuex';
 
   export default {
-    name: "m-works-mdl",
+    name: "m-login-mdl",
     store,
     data() {
       return {
@@ -81,8 +81,10 @@
     },
     mounted() {
       if (!localStorage.getItem("jblog_userInfo")) {
-        this.qqUserInfo()
+        this.qqUserInfo();
+        console.log(1);
       } else {
+        console.log(2);
         this.getLocal()
       }
     },
@@ -100,6 +102,7 @@
         QC.Login({
           //请求成功后的回调
         }, function (oInfo, oOpts) {
+          console.log(oInfo);
           that.setUserInfo({
             name: oInfo.nickname,
             avatar_url: oInfo.figureurl_qq_1,
