@@ -48,14 +48,14 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      /*{
+      {
         test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
           name: 'static/fonts/[name].[ext]?[hash]'
         }
-      },*/
+      },
       {
         test: /\.(less|css|scss)$/,
         use: isProd ?
