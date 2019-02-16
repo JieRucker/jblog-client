@@ -79,11 +79,15 @@
         get_user_info: 'app/get_user_info'
       })
     },
+    created(){
+      console.log(666,this.show)
+    },
     mounted() {
+      console.log(1111);
+
       this.$nextTick(()=>{
         console.log(2222);
       })
-      console.log(1111);
       if (!localStorage.getItem("jblog_userInfo")) {
         this.qqUserInfo();
         console.log(1);
