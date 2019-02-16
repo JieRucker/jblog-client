@@ -43,6 +43,7 @@
       </Form>
       <div class="third-login">
         <div class="title">第三方登录</div>
+        <span id="qqLoginBtn"></span>
         <a href="javascript:;" class="qq" @click="openQQ">
           <img src="/static/images/avatar/qq.png" alt="QQ">
         </a>
@@ -81,10 +82,8 @@
     },
     mounted() {
       if (!localStorage.getItem("jblog_userInfo")) {
-        this.$Message.info('11');
         this.qqUserInfo();
       } else {
-        this.$Message.info('22');
         this.getLocal()
       }
     },
@@ -99,7 +98,17 @@
       },
       qqUserInfo() {
         let that = this;
+
         QC.Login({
+            btnId: "qqLoginBtn",
+            scope: "all",
+            size: "B_M"
+          }, function(oInfo, oOpts){
+            alert(oInfo);
+          }
+        );
+
+        /*QC.Login({
           //请求成功后的回调
         }, function (oInfo, oOpts) {
           alert(oInfo);
@@ -113,7 +122,7 @@
           that.setLocal()
         }, function () {
           console.log("退出成功")
-        })
+        })*/
       },
       getLocal() {
         if (localStorage.getItem("jblog_userInfo")) {
