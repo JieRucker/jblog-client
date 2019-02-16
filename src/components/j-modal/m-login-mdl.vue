@@ -79,24 +79,12 @@
         get_user_info: 'app/get_user_info'
       })
     },
-    created(){
-      console.log(666,this.show)
-    },
     mounted() {
-      alert(23);
-      setTimeout(()=>{
-        alert(2)
-      });
-      console.log(1111);
-
-      this.$nextTick(()=>{
-        console.log(2222);
-      })
       if (!localStorage.getItem("jblog_userInfo")) {
+        this.$Message.info('11');
         this.qqUserInfo();
-        console.log(1);
       } else {
-        console.log(2);
+        this.$Message.info('22');
         this.getLocal()
       }
     },
@@ -114,7 +102,7 @@
         QC.Login({
           //请求成功后的回调
         }, function (oInfo, oOpts) {
-          console.log(oInfo);
+          alert(oInfo);
           that.setUserInfo({
             name: oInfo.nickname,
             avatar_url: oInfo.figureurl_qq_1,
