@@ -1,5 +1,5 @@
 const build = {
-  static_url: 'https://static-client.jrucker.cn/', // 静态资源路径
+  static_url: 'https://www.jrucker.cn/', // 静态资源路径
   common_url: 'https://www.jrucker.cn',
 };
 const build_dev = {

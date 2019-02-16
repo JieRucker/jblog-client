@@ -89,7 +89,7 @@
 
 <template>
   <div class="emoji-box" v-if="visible">
-    <Icon type="close-round" @click="close" class="close"></Icon>
+    <Icon type="close-round" @click.native="close" class="close"></Icon>
     <div class="emoji">
       <div class="triangle"></div>
       <ul class="emoji-controller">
@@ -130,7 +130,7 @@
       return {
         visible: this.value,
         emojiData: data,
-        pannels: ['表情', '自然', '物品', '地点', '符号'],
+        pannels: ['表情'], // '自然', '物品', '地点', '符号'
         activeIndex: 0
       }
     },
@@ -144,6 +144,7 @@
     },
     methods: {
       close() {
+        console.log('close');
         this.visible = false;
       },
       changeActive(index) {

@@ -80,7 +80,9 @@
       }),
       openQQ() {
         let common_url = process.env.api.common_url;
-        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101454722&response_type=token&scope=all&redirect_uri=http://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+
+          // http://www.jrucker.cn/api/qq/oauth/callback
+        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://api.jrucker.cn/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
       },
       openGithub() {
         let auth = window.open("http://www.jrucker.cn/api/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
@@ -116,6 +118,12 @@
         value || this.$jDynamic.hide({component: 'mLoginMdl'})
       },
       async save() {
+        if (this.$Global.isBlank(this.user.name)) {
+          return this.$Message.info('请输入昵称！')
+        } else if (this.$Global.isBlank(this.user.email)) {
+          return this.$Message.info('请输入邮箱！')
+        }
+
         let res = await this.$api.mainInterface.registerUser({
           name: this.user.name,
           email: this.user.email

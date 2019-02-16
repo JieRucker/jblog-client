@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
   .main {
-    padding-bottom: 150px;
+    padding-bottom: 260px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;

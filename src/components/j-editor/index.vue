@@ -88,13 +88,13 @@
 
 <template>
   <div class="j-editor">
-    <textarea
+    <input
       :class="[{'focused':show_focused},'edit-box']"
       v-model="innerText"
       @focus="focus"
       @keyup.ctrl.enter="submit"
       :placeholder="placeholder">
-    </textarea>
+    </input>
 
     <div class="action-box" v-if="show_focused">
       <div class="emoji">
