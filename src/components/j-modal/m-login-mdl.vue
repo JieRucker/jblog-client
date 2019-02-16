@@ -43,7 +43,7 @@
       </Form>
       <div class="third-login">
         <div class="title">第三方登录</div>
-        <a href="javascript:;" class="qq" id="qqLoginBtn">
+        <a href="javascript:;" class="qq" @click="openQQ">
           <img src="/static/images/avatar/qq.png" alt="QQ">
         </a>
         <a href="javascript:;" class="github" @click="openGithub">
@@ -74,33 +74,58 @@
         }
       }
     },
-    mounted() {
-      this.$nextTick(() => {
-        this.openQQ()
+    computed: {
+      ...mapGetters({
+        get_user_info: 'app/get_user_info'
       })
+    },
+    mounted() {
+      if (!localStorage.getItem("jblog_userInfo")) {
+        this.qqUserInfo()
+      } else {
+        this.getLocal()
+      }
     },
     methods: {
       ...mapMutations({
         setUserInfo: 'app/SET_USER_INFO'
       }),
       openQQ() {
-        QC.Login({
-            btnId: "qqLoginBtn",
-            //用户需要确认的scope授权项，可选，默认all
-            scope: "all",
-            //按钮尺寸，可用值[A_XL| A_L| A_M| A_S|  B_M| B_S| C_S]，可选，默认B_S
-            // size: "A_XL"
-          }, function (reqData, opts) {//登录成功
-            console.log(reqData)
-          }, function (opts) {//注销成功
-            console.log(opts)
-          }
-        );
-      },
-      openQQ1() {
         // let common_url = process.env.api.common_url;
         // http://www.jrucker.cn/api/qq/oauth/callback
-        // window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://api.jrucker.cn/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://api.jrucker.cn/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+      },
+      qqUserInfo() {
+        let that = this;
+        QC.Login({
+          //请求成功后的回调
+        }, function (oInfo, oOpts) {
+          that.setUserInfo({
+            name: oInfo.nickname,
+            avatar_url: oInfo.figureurl_qq_1,
+            email: ''
+          });
+
+          that.onVisible(false);
+          that.setLocal()
+        }, function () {
+          console.log("退出成功")
+        })
+      },
+      getLocal() {
+        if (localStorage.getItem("jblog_userInfo")) {
+          let info = JSON.parse(localStorage.getItem("jblog_userInfo"));
+          this.setUserInfo({
+            name: info.name,
+            avatar_url: info.avatar_url,
+            email: info.email
+          })
+        }
+      },
+      setLocal() {
+        let info = this.get_user_info;
+        let s_info = JSON.stringify({name: info.name, avatar_url: info.avatar_url, email: info.email});
+        localStorage.setItem("jblog_userInfo", s_info)
       },
       openGithub() {
         let auth = window.open("http://www.jrucker.cn/api/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
