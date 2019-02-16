@@ -7,7 +7,7 @@
         z-index: 2;
         width: 70px;
         height: 900px;
-        background: url(https://static-client.jrucker.cn/static/images/icon/scroll.png);
+        background: url(https://www.jrucker.cn/static/images/icon/scroll.png);
         transition: all .5s ease-in-out;
         text-align: center;
     }

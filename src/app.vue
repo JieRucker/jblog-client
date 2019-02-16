@@ -5,7 +5,7 @@
 
   body {
     background: #efefef !important;
-    cursor: url(https://static-client.jrucker.cn/static/images/icon/cursor.ico), auto;
+    cursor: url(https://www.jrucker.cn/static/images/icon/cursor.ico), auto;
   }
 
   .app-main {
