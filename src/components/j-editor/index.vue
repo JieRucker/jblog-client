@@ -211,7 +211,8 @@
       /*登出*/
       loginOut() {
         this.setUserInfo({name: '', avatar_url: ''});
-        this.$Global.delCookie('visitor_id')
+        this.$Global.delCookie('visitor_id');
+        QC.Login.signOut()
       },
       emojiToggle() {
         this.emoji = true
