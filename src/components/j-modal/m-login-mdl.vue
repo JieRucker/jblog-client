@@ -43,7 +43,7 @@
       </Form>
       <div class="third-login">
         <div class="title">第三方登录</div>
-        <a href="javascript:;" class="qq" @click="openQQ">
+        <a href="javascript:;" class="qq" @click="openQQ">11
           <img src="/static/images/avatar/qq.png" alt="QQ">
         </a>
         <a href="javascript:;" class="github" @click="openGithub">
@@ -80,6 +80,10 @@
       })
     },
     mounted() {
+      this.$nextTick(()=>{
+        console.log(2222);
+      })
+      console.log(1111);
       if (!localStorage.getItem("jblog_userInfo")) {
         this.qqUserInfo();
         console.log(1);
