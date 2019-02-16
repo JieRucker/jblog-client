@@ -43,7 +43,7 @@
       </Form>
       <div class="third-login">
         <div class="title">第三方登录</div>
-        <a href="javascript:;" class="qq" @click="openQQ">11
+        <a href="javascript:;" class="qq" @click="openQQ">
           <img src="/static/images/avatar/qq.png" alt="QQ">
         </a>
         <a href="javascript:;" class="github" @click="openGithub">
@@ -83,6 +83,10 @@
       console.log(666,this.show)
     },
     mounted() {
+      alert(23);
+      setTimeout(()=>{
+        alert(2)
+      });
       console.log(1111);
 
       this.$nextTick(()=>{
