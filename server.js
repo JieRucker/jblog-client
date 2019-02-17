@@ -82,7 +82,7 @@ Object.keys(proxyTable).forEach(function (context) {
 });
 
 app.use(compression({threshold: 0}));
-app.use(favicon('./src/assets/images/logo/logo-48.png'));
+app.use(favicon('./src/assets/images/logo/j-48.jpg'));
 app.use('/static', serve('./dist/static', true));
 app.use('/dist', serve('./dist', true));
 // app.use('/public', serve('./public', true))
