@@ -374,7 +374,7 @@
         },
         comment: {
           current_page: 1,
-          page_size: 5,
+          page_size: 10,
           total_count: 0
         },
         more: true, /*是否还有数据*/
