@@ -11,7 +11,6 @@
       padding: 5px;
       background-color: #fff;
       overflow-y: auto;
-      user-select: all;
       &:empty:before {
         content: attr(placeholder);
         color: gray;
