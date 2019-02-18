@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-  @import "./styles/emoji-sprite.css";
+  @import "./styles/emoji.css";
 
   .emoji-box /deep/ {
     position: absolute;

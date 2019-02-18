@@ -1,0 +1,335 @@
+[class*="sprite-"] {
+    width:25px;
+    height: 25px;
+    background: url('/static/images/sprite/emoji.png');
+    background-repeat: no-repeat;
+    vertical-align: top;
+    display: inline-block;
+    margin: 5px;
+    background-size: 882.8125px 867.1875px;
+}
+
+.sprite-disappointed {
+    width: 25px;
+    height: 25px;
+    background-position: -0px -0px;
+}
+
+.sprite-satisfied {
+    width: 25px;
+    height: 25px;
+    background-position: -25px -0px;
+}
+
+.sprite-disappointed_relieved {
+    width: 25px;
+    height: 25px;
+    background-position: -50px -0px;
+}
+
+.sprite-dizzy_face {
+    width: 25px;
+    height: 25px;
+    background-position: -75px -0px;
+}
+
+.sprite-flushed {
+    width: 25px;
+    height: 25px;
+    background-position: -100px -0px;
+}
+
+.sprite-frowning {
+    width: 25px;
+    height: 25px;
+    background-position: -125px -0px;
+}
+
+.sprite-grimacing {
+    width: 25px;
+    height: 25px;
+    background-position: -150px -0px;
+}
+
+.sprite-grin {
+    width: 25px;
+    height: 25px;
+    background-position: -175px -0px;
+}
+
+.sprite-grinning {
+    width: 25px;
+    height: 25px;
+    background-position: -200px -0px;
+}
+
+.sprite-heart_eyes {
+    width: 25px;
+    height: 25px;
+    background-position: -225px -0px;
+}
+
+.sprite-hushed {
+    width: 25px;
+    height: 25px;
+    background-position: -250px -0px;
+}
+
+.sprite-innocent {
+    width: 25px;
+    height: 25px;
+    background-position: -275px -0px;
+}
+
+.sprite-joy {
+    width: 25px;
+    height: 25px;
+    background-position: -300px -0px;
+}
+
+.sprite-kissing {
+    width: 25px;
+    height: 25px;
+    background-position: -325px -0px;
+}
+
+.sprite-kissing_closed_eyes {
+    width: 25px;
+    height: 25px;
+    background-position: -350px -0px;
+}
+
+.sprite-kissing_face {
+    width: 25px;
+    height: 25px;
+    background-position: -375px -0px;
+}
+
+.sprite-kissing_heart {
+    width: 25px;
+    height: 25px;
+    background-position: -400px -0px;
+}
+
+.sprite-kissing_smiling_eyes {
+    width: 25px;
+    height: 25px;
+    background-position: -425px -0px;
+}
+
+.sprite-laughing {
+    width: 25px;
+    height: 25px;
+    background-position: -450px -0px;
+}
+
+.sprite-mask {
+    width: 25px;
+    height: 25px;
+    background-position: -475px -0px;
+}
+
+.sprite-neutral_face {
+    width: 25px;
+    height: 25px;
+    background-position: -500px -0px;
+}
+
+.sprite-no_mouth {
+    width: 25px;
+    height: 25px;
+    background-position: -525px -0px;
+}
+
+.sprite-open_mouth {
+    width: 25px;
+    height: 25px;
+    background-position: -550px -0px;
+}
+
+.sprite-pensive {
+    width: 25px;
+    height: 25px;
+    background-position: -575px -0px;
+}
+
+.sprite-persevere {
+    width: 25px;
+    height: 25px;
+    background-position: -0px -25px;
+}
+
+.sprite-relaxed {
+    width: 25px;
+    height: 25px;
+    background-position: -25px -25px;
+}
+
+.sprite-relieved {
+    width: 25px;
+    height: 25px;
+    background-position: -50px -25px;
+}
+
+.sprite-cry {
+    width: 25px;
+    height: 25px;
+    background-position: -75px -25px;
+}
+
+.sprite-sleeping {
+    width: 25px;
+    height: 25px;
+    background-position: -100px -25px;
+}
+
+.sprite-sleepy {
+    width: 25px;
+    height: 25px;
+    background-position: -125px -25px;
+}
+
+.sprite-smile {
+    width: 25px;
+    height: 25px;
+    background-position: -150px -25px;
+}
+
+.sprite-smiley {
+    width: 25px;
+    height: 25px;
+    background-position: -175px -25px;
+}
+
+.sprite-smirk {
+    width: 25px;
+    height: 25px;
+    background-position: -200px -25px;
+}
+
+.sprite-sob {
+    width: 25px;
+    height: 25px;
+    background-position: -225px -25px;
+}
+
+.sprite-stuck_out_tongue {
+    width: 25px;
+    height: 25px;
+    background-position: -250px -25px;
+}
+
+.sprite-stuck_out_tongue_closed_eyes {
+    width: 25px;
+    height: 25px;
+    background-position: -275px -25px;
+}
+
+.sprite-stuck_out_tongue_winking_eye {
+    width: 25px;
+    height: 25px;
+    background-position: -300px -25px;
+}
+
+.sprite-sunglasses {
+    width: 25px;
+    height: 25px;
+    background-position: -325px -25px;
+}
+
+.sprite-sweat {
+    width: 25px;
+    height: 25px;
+    background-position: -350px -25px;
+}
+
+.sprite-sweat_smile {
+    width: 25px;
+    height: 25px;
+    background-position: -375px -25px;
+}
+
+.sprite-tired_face {
+    width: 25px;
+    height: 25px;
+    background-position: -400px -25px;
+}
+
+.sprite-triumph {
+    width: 25px;
+    height: 25px;
+    background-position: -425px -25px;
+}
+
+.sprite-unamused {
+    width: 25px;
+    height: 25px;
+    background-position: -450px -25px;
+}
+
+.sprite-weary {
+    width: 25px;
+    height: 25px;
+    background-position: -475px -25px;
+}
+
+.sprite-wink {
+    width: 25px;
+    height: 25px;
+    background-position: -500px -25px;
+}
+
+.sprite-worried {
+    width: 25px;
+    height: 25px;
+    background-position: -525px -25px;
+}
+
+.sprite-yum {
+    width: 25px;
+    height: 25px;
+    background-position: -550px -25px;
+}
+
+.sprite-angry {
+    width: 25px;
+    height: 25px;
+    background-position: -575px -25px;
+}
+
+.sprite-anguished {
+    width: 25px;
+    height: 25px;
+    background-position: -0px -50px;
+}
+
+.sprite-astonished {
+    width: 25px;
+    height: 25px;
+    background-position: -25px -50px;
+}
+
+.sprite-blush {
+    width: 25px;
+    height: 25px;
+    background-position: -50px -50px;
+}
+
+.sprite-cold_sweat {
+    width: 25px;
+    height: 25px;
+    background-position: -75px -50px;
+}
+
+.sprite-confounded {
+    width: 25px;
+    height: 25px;
+    background-position: -100px -50px;
+}
+
+.sprite-confused {
+    width: 25px;
+    height: 25px;
+    background-position: -125px -50px;
+}
+
