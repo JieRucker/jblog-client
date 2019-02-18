@@ -18,7 +18,6 @@
       &.focused {
         border-color: #007fff;
       }
-
     }
     .action-box {
       display: flex;
