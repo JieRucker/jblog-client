@@ -211,6 +211,7 @@
       loginOut() {
         this.setUserInfo({name: '', avatar_url: ''});
         this.$Global.delCookie('visitor_id');
+        localStorage.removeItem('jblog_userInfo');
         QC.Login.signOut()
       },
       emojiToggle() {
