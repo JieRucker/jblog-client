@@ -71,7 +71,8 @@
         user: {
           name: '',
           email: ''
-        }
+        },
+          qqClient:null
       }
     },
     computed: {
@@ -93,7 +94,7 @@
         setUserInfo: 'app/SET_USER_INFO'
       }),
       openQQ() {
-        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+          this.qqClient = window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
       },
       qqUserInfo() {
         let that = this;
@@ -108,6 +109,7 @@
           });
 
           that.onVisible(false);
+            that.qqClient && that.qqClient.close();
           that.setLocal()
         }, function () {
           console.log("退出成功")
