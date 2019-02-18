@@ -102,7 +102,6 @@
         QC.Login({
           //请求成功后的回调
         }, function (oInfo, oOpts) {
-          alert(oInfo);
           that.setUserInfo({
             name: oInfo.nickname,
             avatar_url: oInfo.figureurl_qq_1,
