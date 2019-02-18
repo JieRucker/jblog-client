@@ -72,7 +72,7 @@
           name: '',
           email: ''
         },
-          qqClient:null
+        qqClient: null
       }
     },
     computed: {
@@ -93,8 +93,34 @@
       ...mapMutations({
         setUserInfo: 'app/SET_USER_INFO'
       }),
-      openQQ() {
-          this.qqClient = window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+      openQQ(){
+        let auth = window.open("https://www.jrucker.cn/api/qq/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
+        let timer = setInterval(async () => {
+
+          //检测打开的窗口是否关闭
+          let visitor_id = this.$Global.getCookie('visitor_id');
+          if (auth.closed) {
+            clearInterval(timer)
+          }
+          if (visitor_id) {
+            auth.close();
+            clearInterval(timer);
+
+            let res = await this.$api.mainInterface.getUser({visitor_id});
+            let {code, data = {}} = res.data;
+            if (code === 200) {
+              this.setUserInfo({
+                name: data.name,
+                avatar_url: data.avatar_url
+              });
+
+              this.onVisible(false)
+            }
+          }
+        }, 500)
+      },
+      openQQ1() {
+        this.qqClient = window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
       },
       qqUserInfo() {
         let that = this;
@@ -109,7 +135,7 @@
           });
 
           that.onVisible(false);
-            that.qqClient && that.qqClient.close();
+          that.qqClient && that.qqClient.close();
           that.setLocal()
         }, function () {
           console.log("退出成功")
