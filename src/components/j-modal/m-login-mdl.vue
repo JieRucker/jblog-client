@@ -95,7 +95,7 @@
       openQQ() {
         // let common_url = process.env.api.common_url;
         // http://www.jrucker.cn/api/qq/oauth/callback
-        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://api.jrucker.cn/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
+        window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
       },
       qqUserInfo() {
         let that = this;
