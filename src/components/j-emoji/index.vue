@@ -60,7 +60,7 @@
           a {
             float: left;
             overflow: hidden;
-            height: 30px;
+            height: 31px;
             transition: all ease-out .2s;
             border-radius: 4px;
             &:hover {
@@ -85,7 +85,9 @@
 
 <template>
   <div class="emoji-box" v-if="visible">
-    <Icon type="close-round" @click.native="close" class="close"></Icon>
+    <a class="close" href="javascript:;" @click.prevent="onClose" @touchstart.prevent="onClose">
+      <Icon type="close-round"></Icon>
+    </a>
     <div class="emoji">
       <div class="triangle"></div>
       <ul class="emoji-controller">
@@ -139,8 +141,8 @@
       }
     },
     methods: {
-      close() {
-        console.log('close');
+        onClose() {
+        this.$Message.info('close');
         this.visible = false;
       },
       changeActive(index) {
