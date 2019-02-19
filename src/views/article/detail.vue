@@ -471,7 +471,15 @@
       },
       /*解析内容*/
       parseContent(content) {
-        let emojiObject = {};
+          let pannels = '表情';
+
+          let finStr = content;
+          finStr = finStr.replace(new RegExp("<", "g"), "&lt");
+          finStr = finStr.replace(new RegExp(">", "g"), "&gt");
+
+          emojiData[pannels].find()
+
+        /*let emojiObject = {};
         let finStr = content;
         finStr = finStr.replace(new RegExp("<", "g"), "&lt");
         finStr = finStr.replace(new RegExp(">", "g"), "&gt");
@@ -483,11 +491,11 @@
         Object.keys(emojiObject).forEach((item) => {
           let path = "/static/images/emoji/";
           let value = emojiObject[item];
-          let imgURL = `<span style = "display: inline-block;vertical-align: middle"><img src=${path}${value} alt="" width = "16px" height = "16px" /></span>`;
+          let imgURL = `<span style="display: inline-block;vertical-align: middle"><img src=${path}${value} alt="" width="16px" height="16px" /></span>`;
           finStr = finStr.replace(new RegExp(item, "g"), imgURL)
         });
 
-        return finStr
+        return finStr*/
       },
       /*提交评论*/
       async onSubmit() {
