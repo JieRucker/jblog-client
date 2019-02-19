@@ -7,9 +7,13 @@
     z-index: 100;
     .close {
       position: absolute;
-      right: 12px;
-      top: 12px;
+      right: 5px;
+      top: 5px;
+      width: 25px;
       cursor: pointer;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
     }
     .emoji {
       width: 280px;
@@ -85,7 +89,7 @@
 
 <template>
   <div class="emoji-box" v-if="visible">
-    <a class="close" href="javascript:;" @click.prevent="onClose" @touchstart.prevent="onClose">
+    <a class="close" href="javascript:;" @click="onClose" @touchstart="onClose">
       <Icon type="close-round"></Icon>
     </a>
     <div class="emoji">
@@ -142,7 +146,6 @@
     },
     methods: {
         onClose() {
-        this.$Message.info('close');
         this.visible = false;
       },
       changeActive(index) {
