@@ -72,21 +72,11 @@
           name: '',
           email: ''
         },
-        qqClient: null
       }
     },
     computed: {
       ...mapGetters({
         get_user_info: 'app/get_user_info'
-      })
-    },
-    mounted() {
-      this.$nextTick(() => {
-        if (!localStorage.getItem("jblog_userInfo")) {
-          this.qqUserInfo();
-        } else {
-          this.getLocal()
-        }
       })
     },
     methods: {
@@ -118,43 +108,6 @@
             }
           }
         }, 500)
-      },
-      openQQ1() {
-        this.qqClient = window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101552132&response_type=token&scope=all&redirect_uri=https://www.jrucker.cn/api/qq/oauth/callback', 'oauth2Login_10000', 'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');
-      },
-      qqUserInfo() {
-        let that = this;
-
-        QC.Login({
-          //请求成功后的回调
-        }, function (oInfo, oOpts) {
-          that.setUserInfo({
-            name: oInfo.nickname,
-            avatar_url: oInfo.figureurl_qq_1,
-            email: ''
-          });
-
-          that.onVisible(false);
-          that.qqClient && that.qqClient.close();
-          that.setLocal()
-        }, function () {
-          console.log("退出成功")
-        })
-      },
-      getLocal() {
-        if (localStorage.getItem("jblog_userInfo")) {
-          let info = JSON.parse(localStorage.getItem("jblog_userInfo"));
-          this.setUserInfo({
-            name: info.name,
-            avatar_url: info.avatar_url,
-            email: info.email
-          })
-        }
-      },
-      setLocal() {
-        let info = this.get_user_info;
-        let s_info = JSON.stringify({name: info.name, avatar_url: info.avatar_url, email: info.email});
-        localStorage.setItem("jblog_userInfo", s_info)
       },
       openGithub() {
         let auth = window.open("http://www.jrucker.cn/api/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
