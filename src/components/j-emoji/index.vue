@@ -60,18 +60,14 @@
           a {
             float: left;
             overflow: hidden;
-            height: 35px;
+            height: 30px;
             transition: all ease-out .2s;
             border-radius: 4px;
             &:hover {
-              background-color: #d8d8d8;
-              border-color: #d8d8d8;
+              background-color: #f2f2f2;
             }
             span {
-              width: 25px;
-              height: 25px;
               display: inline-block;
-              border: 1px solid transparent;
               cursor: pointer;
             }
           }

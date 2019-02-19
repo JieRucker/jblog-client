@@ -3,10 +3,8 @@
     height: 25px;
     background: url('/static/images/sprite/emoji.png');
     background-repeat: no-repeat;
-    vertical-align: top;
     display: inline-block;
-    margin: 5px;
-    background-size: 882.8125px 867.1875px;
+    margin: 3px;
 }
 
 .sprite-disappointed {
