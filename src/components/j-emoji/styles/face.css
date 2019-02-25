@@ -1,0 +1,337 @@
+.face {
+    background: url('/static/images/sprite/face.png') no-repeat scroll 0 0 transparent;
+    width: 22px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.face30 {
+    width: 22px;
+    height: 24px;
+    background-position: -0px -0px;
+}
+
+.face32 {
+    width: 22px;
+    height: 24px;
+    background-position: -22px -0px;
+}
+
+.face37 {
+    width: 22px;
+    height: 24px;
+    background-position: -44px -0px;
+}
+
+.face38 {
+    width: 22px;
+    height: 24px;
+    background-position: -66px -0px;
+}
+
+.face39 {
+    width: 22px;
+    height: 24px;
+    background-position: -88px -0px;
+}
+
+.face40 {
+    width: 22px;
+    height: 24px;
+    background-position: -110px -0px;
+}
+
+.face41 {
+    width: 22px;
+    height: 24px;
+    background-position: -132px -0px;
+}
+
+.face42 {
+    width: 22px;
+    height: 24px;
+    background-position: -154px -0px;
+}
+
+.face43 {
+    width: 22px;
+    height: 24px;
+    background-position: -176px -0px;
+}
+
+.face44 {
+    width: 22px;
+    height: 24px;
+    background-position: -198px -0px;
+}
+
+.face34 {
+    width: 23px;
+    height: 24px;
+    background-position: -220px -0px;
+}
+
+.face35 {
+    width: 23px;
+    height: 24px;
+    background-position: -243px -0px;
+}
+
+.face36 {
+    width: 23px;
+    height: 24px;
+    background-position: -266px -0px;
+}
+
+.face31 {
+    width: 24px;
+    height: 24px;
+    background-position: -289px -0px;
+}
+
+.face33 {
+    width: 25px;
+    height: 24px;
+    background-position: -313px -0px;
+}
+
+.face0 {
+    width: 22px;
+    height: 22px;
+    background-position: -338px -0px;
+}
+
+.face2 {
+    width: 22px;
+    height: 22px;
+    background-position: -360px -0px;
+}
+
+.face7 {
+    width: 22px;
+    height: 22px;
+    background-position: -382px -0px;
+}
+
+.face8 {
+    width: 22px;
+    height: 22px;
+    background-position: -404px -0px;
+}
+
+.face9 {
+    width: 22px;
+    height: 22px;
+    background-position: -426px -0px;
+}
+
+.face10 {
+    width: 22px;
+    height: 22px;
+    background-position: -448px -0px;
+}
+
+.face11 {
+    width: 22px;
+    height: 22px;
+    background-position: -470px -0px;
+}
+
+.face13 {
+    width: 22px;
+    height: 22px;
+    background-position: -492px -0px;
+}
+
+.face12 {
+    width: 22px;
+    height: 22px;
+    background-position: -514px -0px;
+}
+
+.face14 {
+    width: 22px;
+    height: 22px;
+    background-position: -536px -0px;
+}
+
+.face15 {
+    width: 22px;
+    height: 22px;
+    background-position: -558px -0px;
+}
+
+.face17 {
+    width: 22px;
+    height: 22px;
+    background-position: -0px -24px;
+}
+
+.face22 {
+    width: 22px;
+    height: 22px;
+    background-position: -22px -24px;
+}
+
+.face23 {
+    width: 22px;
+    height: 22px;
+    background-position: -44px -24px;
+}
+
+.face24 {
+    width: 22px;
+    height: 22px;
+    background-position: -66px -24px;
+}
+
+.face25 {
+    width: 22px;
+    height: 22px;
+    background-position: -88px -24px;
+}
+
+.face27 {
+    width: 22px;
+    height: 22px;
+    background-position: -110px -24px;
+}
+
+.face28 {
+    width: 22px;
+    height: 22px;
+    background-position: -132px -24px;
+}
+
+.face29 {
+    width: 22px;
+    height: 22px;
+    background-position: -154px -24px;
+}
+
+.face45 {
+    width: 22px;
+    height: 22px;
+    background-position: -176px -24px;
+}
+
+.face47 {
+    width: 22px;
+    height: 22px;
+    background-position: -198px -24px;
+}
+
+.face52 {
+    width: 22px;
+    height: 22px;
+    background-position: -220px -24px;
+}
+
+.face53 {
+    width: 22px;
+    height: 22px;
+    background-position: -242px -24px;
+}
+
+.face54 {
+    width: 22px;
+    height: 22px;
+    background-position: -264px -24px;
+}
+
+.face4 {
+    width: 23px;
+    height: 22px;
+    background-position: -286px -24px;
+}
+
+.face5 {
+    width: 23px;
+    height: 22px;
+    background-position: -309px -24px;
+}
+
+.face6 {
+    width: 23px;
+    height: 22px;
+    background-position: -332px -24px;
+}
+
+.face19 {
+    width: 23px;
+    height: 22px;
+    background-position: -355px -24px;
+}
+
+.face20 {
+    width: 23px;
+    height: 22px;
+    background-position: -378px -24px;
+}
+
+.face21 {
+    width: 23px;
+    height: 22px;
+    background-position: -401px -24px;
+}
+
+.face26 {
+    width: 23px;
+    height: 22px;
+    background-position: -424px -24px;
+}
+
+.face49 {
+    width: 23px;
+    height: 22px;
+    background-position: -447px -24px;
+}
+
+.face50 {
+    width: 23px;
+    height: 22px;
+    background-position: -470px -24px;
+}
+
+.face51 {
+    width: 23px;
+    height: 22px;
+    background-position: -493px -24px;
+}
+
+.face1 {
+    width: 24px;
+    height: 22px;
+    background-position: -516px -24px;
+}
+
+.face16 {
+    width: 24px;
+    height: 22px;
+    background-position: -540px -24px;
+}
+
+.face46 {
+    width: 24px;
+    height: 22px;
+    background-position: -564px -24px;
+}
+
+.face3 {
+    width: 25px;
+    height: 22px;
+    background-position: -0px -46px;
+}
+
+.face18 {
+    width: 25px;
+    height: 22px;
+    background-position: -25px -46px;
+}
+
+.face48 {
+    width: 25px;
+    height: 22px;
+    background-position: -50px -46px;
+}
+

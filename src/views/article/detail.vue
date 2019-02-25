@@ -471,46 +471,26 @@
       },
       /*解析内容*/
       parseContent(content) {
-          /*let pannels = '表情';
-
-          let finStr = content;
-          finStr = finStr.replace(new RegExp("<", "g"), "&lt");
-          finStr = finStr.replace(new RegExp(">", "g"), "&gt");
-
-          emojiData[pannels].find()*/
-
-
-        let emojiObject = {};
         let finStr = content;
         finStr = finStr.replace(new RegExp("<", "g"), "&lt");
         finStr = finStr.replace(new RegExp(">", "g"), "&gt");
 
-        Object.values(emojiData).forEach((item, index, arr) => {
-          emojiObject = Object.assign(emojiObject, item)
-        });
-
-        Object.keys(emojiObject).forEach((item) => {
-          let path = "/static/images/emoji/";
-          let value = emojiObject[item];
+        emojiData.forEach(item => {
+          let path = "/static/images/face/";
+          let value = item.url;
           let imgURL = `<span style="display: inline-block;vertical-align: middle"><img src=${path}${value} alt="" width="16px" height="16px" /></span>`;
-          finStr = finStr.replace(new RegExp(item, "g"), imgURL)
+          finStr = finStr.replace(new RegExp(item.title, "g"), imgURL)
         });
 
         return finStr
       },
       /*提交评论*/
       async onSubmit() {
-        /*if (this.$Global.isBlank(this.get_user_info.name)) {
+        if (this.$Global.isBlank(this.get_user_info.name)) {
           return this.$Message.info('请先登陆，再继续操作！')
-        }*/
+        }
 
-        let content = this.parseContent(this.commentContent);
-
-          console.log('content',this.commentContent);
-
-          console.log('parseContent',content)
-
-        /*let reqBody = {
+        let reqBody = {
           article_id: this.$route.params.id,
           name: this.get_user_info.name,
           avatar_url: this.get_user_info.avatar_url,
@@ -525,7 +505,7 @@
           this.commentContent = '';
           this.getComment();
           this.$Message.info(msg)
-        }*/
+        }
       },
       /*回复评论（一级）*/
       async onReplySubmit(idx) {

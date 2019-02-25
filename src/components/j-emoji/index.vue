@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-  @import "./styles/emoji.css";
+  @import "./styles/face.css";
 
   .emoji-box /deep/ {
     position: absolute;
@@ -64,7 +64,8 @@
           a {
             float: left;
             overflow: hidden;
-            height: 31px;
+            height: 28px;
+            width: 27px;
             transition: all ease-out .2s;
             border-radius: 4px;
             &:hover {
@@ -104,12 +105,11 @@
       </ul>
       <ul class="emoji-container">
         <li
-          v-for="(emojiGroup, index) in emojis"
+          v-for="(emoji, index) in emojiData"
           style="padding: 0"
-          :key="index"
-          v-if="index === activeIndex">
-          <a href="javascript:;" v-for="(emoji, index) in emojiGroup" :key="index" @click="selectItem(emoji)">
-            <span class="emoji-item" :title="emoji" :class="'sprite-' + getPureName(emoji)"></span>
+          :key="index">
+          <a href="javascript:;" :key="index" @click="onSelect(emoji)">
+            <span class="emoji-item" :title="emoji.title" :class="'face ' + emoji.alias"></span>
           </a>
         </li>
       </ul>
@@ -151,20 +151,20 @@
       changeActive(index) {
         this.activeIndex = index
       },
-      getPureName(name) {
+      /*getPureName(name) {
         return name.replace(/:/g, '')
-      },
-      selectItem(emoji) {
+      },*/
+      onSelect(emoji) {
         this.$emit('on-select', emoji);
         this.visible = false;
       }
     },
-    computed: {
+    /*computed: {
       emojis() {
         return this.pannels.map(item => {
           return Object.keys(this.emojiData[item]) //返回所有emoji的键值组成的数组
         })
       }
-    }
+    }*/
   }
 </script>

@@ -225,8 +225,8 @@
           }
         })
       },
-      onSelect(val) {
-        this.innerText += val;
+      onSelect(res) {
+        this.innerText += res.title;
       },
       input() {
         const v = this.$el.querySelector('.edit-box').innerHTML;
