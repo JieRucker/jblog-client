@@ -104,12 +104,12 @@
       </ul>
       <ul class="emoji-container">
         <li
-          v-for="(item, index) in emojis"
+          v-for="(emojiGroup, index) in emojis"
           style="padding: 0"
           :key="index"
           v-if="index === activeIndex">
-          <a href="javascript:;" :key="index" @click="onSelect(item)">
-            <span class="emoji-item" :title="item.title" :class="'sprite-' + item.alias"></span>
+          <a href="javascript:;" v-for="(emoji, index) in emojiGroup" :key="index" @click="selectItem(emoji)">
+            <span class="emoji-item" :title="emoji" :class="'sprite-' + getPureName(emoji)"></span>
           </a>
         </li>
       </ul>
@@ -154,8 +154,8 @@
       getPureName(name) {
         return name.replace(/:/g, '')
       },
-        onSelect(item) {
-        this.$emit('on-select', item.title);
+      selectItem(emoji) {
+        this.$emit('on-select', emoji);
         this.visible = false;
       }
     },

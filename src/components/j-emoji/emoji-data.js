@@ -1,4 +1,4 @@
-const emoji = {
+/*const emoji = {
     '表情': [
         {title: '[愤怒]', alias: 'angry', url: 'angry.png'},
         {title: '[痛苦]', alias: 'anguished', url: 'anguished.png'},
@@ -42,9 +42,9 @@ const emoji = {
         {title: '[郁闷]', alias: 'worried', url: 'worried.png'},
         {title: '[好吃]', alias: 'yum', url: 'yum.png'}
     ]
-};
+};*/
 
-/*const object1 = {
+const emoji = {
     "表情": {
         ":bowtie:": "bowtie.png",
         ":smile:": "smile.png",
@@ -927,6 +927,6 @@ const emoji = {
         ":small_red_triangle_down:": "small_red_triangle_down.png",
         ":shipit:": "shipit.png"
     }
-};*/
+};
 
 export default emoji;

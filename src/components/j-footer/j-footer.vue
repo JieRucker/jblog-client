@@ -40,7 +40,7 @@
       </p>
       <p>
         © <span itemprop="copyrightYear">2018</span> J.Rucker. 由
-        <a href="https://hexo.io/" target="_blank" class="external">Hexo</a> 驱动. Theme By <a
+        <a href="https://ssr.vuejs.org" target="_blank" class="external">SSR</a> 驱动. Theme By <a
         href="https://github.com/JieRucker" target="_blank" class="external">Sagiri</a> v0.0.2.
       </p>
       <p>Made by <span class="author">JRucker</span></p></div>
