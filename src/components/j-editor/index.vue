@@ -25,8 +25,10 @@
       margin-top: 10px;
       .emoji {
         display: flex;
+        .box {
+          margin-right: 10px;
+        }
         .login {
-          margin-left: 10px;
           .in {
             vertical-align: text-bottom;
           }
@@ -97,11 +99,11 @@
 
     <div class="action-box" v-if="show_focused">
       <div class="emoji">
-        <div class="box" @click="emojiToggle">
+        <!--<div class="box" @click="emojiToggle">
           <Icon type="android-happy" class="happy"></Icon>
           表情
           <j-emoji v-model="emoji" @on-select="onSelect"></j-emoji>
-        </div>
+        </div>-->
 
         <div class="login" v-if="showUser && !get_user_info.name">
           <a href="javascript:;" @click="onLogin">登陆
