@@ -490,6 +490,8 @@
           return this.$Message.info('请先登陆，再继续操作！')
         }
 
+        let content = this.parseContent(this.commentContent);
+
         let reqBody = {
           article_id: this.$route.params.id,
           name: this.get_user_info.name,
