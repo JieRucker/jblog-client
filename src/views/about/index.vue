@@ -22,7 +22,9 @@
           text-align: center;
           margin-bottom: 10px;
           img {
-            max-width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            width: 100%;
           }
         }
         .description {
@@ -86,7 +88,7 @@
     },
     computed: {
       ...mapGetters({
-          get_about: 'app/get_about'
+        get_about: 'app/get_about'
       })
     }
   }
