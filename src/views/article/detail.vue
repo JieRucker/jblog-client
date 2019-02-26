@@ -500,10 +500,7 @@
           content: content
         };
 
-          alert(reqBody)
-
-
-          let res = await this.$api.commentInterface.addComment(reqBody);
+        let res = await this.$api.commentInterface.addComment(reqBody);
         let {code, data = {}, msg} = res.data;
         if (code === 200) {
           this.reset();
