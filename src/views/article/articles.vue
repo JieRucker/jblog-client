@@ -96,7 +96,7 @@
           let result = () => {
             let a = [];
             data.list.forEach(article => {
-              let date = `${this.$Global.formatDate(article.article_create_time.replace(/\-/g, "/")).month}-${this.$Global.formatDate(article.article_create_time).day}`;
+              let date = `${this.$Global.formatDate(article.article_create_time.replace(/\-/g, "/")).month}-${this.$Global.formatDate(article.article_create_time.replace(/\-/g, "/")).day}`;
               a.push({
                 date: date,
                 title: article.article_title,
