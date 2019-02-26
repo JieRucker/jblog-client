@@ -90,7 +90,7 @@
 
 <template>
   <div class="emoji-box" v-if="visible">
-    <a class="close" href="javascript:;" @click="onClose" @touchstart="onClose">
+    <a class="close" href="javascript:;" @click.stop="onClose">
       <Icon type="close-round"></Icon>
     </a>
     <div class="emoji">
@@ -98,7 +98,7 @@
       <ul class="emoji-controller">
         <li
           v-for="(pannel,index) in pannels"
-          @click="changeActive(index)"
+          @click.stop="changeActive(index)"
           :class="{'active': index ===activeIndex}">
           {{pannel}}
         </li>
@@ -108,7 +108,7 @@
           v-for="(emoji, index) in emojiData"
           style="padding: 0"
           :key="index">
-          <a href="javascript:;" :key="index" @click="onSelect(emoji)">
+          <a href="javascript:;" :key="index" @click.stop="onSelect(emoji)">
             <span class="emoji-item" :title="emoji.title" :class="'face ' + emoji.alias"></span>
           </a>
         </li>
@@ -139,13 +139,18 @@
     watch: {
       value(val) {
         this.visible = val;
+          // alert(`value:${val}`);
       },
       visible(val) {
-        this.$emit('input', val)
+        this.$emit('input', val);
+          // alert(`visible:${val}`);
+
       }
     },
     methods: {
         onClose() {
+            // this.$emit('input', false);
+            // console.log('onClose');
         this.visible = false;
       },
       changeActive(index) {
@@ -156,6 +161,7 @@
       },*/
       onSelect(emoji) {
         this.$emit('on-select', emoji);
+          // this.$emit('input', false);
         this.visible = false;
       }
     },

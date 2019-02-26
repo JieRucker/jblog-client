@@ -118,7 +118,7 @@
       </div>
       <div class="submit">
         <span class="intro">Ctrl + Enter</span>
-        <button :disabled="!disabled" class="btn" @click="submit">评论</button>
+        <button :disabled="!disabled" class="btn" @click.stop="submit">评论</button>
       </div>
     </div>
   </div>
