@@ -110,7 +110,7 @@
         }, 500)
       },
       openGithub() {
-        let auth = window.open("http://www.jrucker.cn/api/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
+        let auth = window.open("https://www.jrucker.cn/api/github/login", "_blank", "height=600,width=800,toolbar=no, menubar=no, scrollbars=no");
         let timer = setInterval(async () => {
 
           //检测打开的窗口是否关闭
