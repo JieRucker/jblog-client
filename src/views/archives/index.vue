@@ -106,7 +106,9 @@
       ...mapActions({getArchivesList: 'archives/getArchivesList'}),
       onClick() {
         this.showSpinner(true);
-        this.getArchivesList()
+        this.getArchivesList({
+          keyword: this.$route.query.keyword ? this.$route.query.keyword : ''
+        })
       },
       loadMore() {
         let html = document.querySelector('html');
@@ -114,7 +116,9 @@
         if (html.scrollHeight - scrollTop - 204 <= window.innerHeight) {
           if (this.more) {
             this.showSpinner(true);
-            this.getArchivesList()
+            this.getArchivesList({
+              keyword: this.$route.query.keyword ? this.$route.query.keyword : ''
+            })
           }
         }
       },
