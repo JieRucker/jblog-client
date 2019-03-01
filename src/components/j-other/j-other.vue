@@ -39,7 +39,7 @@
   export default {
     name: "j-other",
     mounted() {
-      // this.init()
+      this.init()
     },
     methods: {
       init() {
