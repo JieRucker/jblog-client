@@ -89,7 +89,6 @@
     },
     watch: {
       '$route'(to) {
-        console.log('to', to)
         // this.setReset();
         // this.getArchivesList({keyword: this.$route.query.keyword ? this.$route.query.keyword : ''})
       }
