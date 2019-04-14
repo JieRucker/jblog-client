@@ -89,8 +89,6 @@
     },
     watch: {
       '$route'(to) {
-        // this.setReset();
-        // this.getArchivesList({keyword: this.$route.query.keyword ? this.$route.query.keyword : ''})
       }
     },
     mounted() {
