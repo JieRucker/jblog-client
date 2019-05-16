@@ -52,6 +52,7 @@
 
 <script>
   // import {createNamespacedHelpers} from 'vuex'
+
   // const {mapState, mapGetters, mapActions, mapMutations} = createNamespacedHelpers('archives');
   import {mapState, mapGetters, mapActions, mapMutations} from 'vuex';
   import jAside from '@/components/j-aside/j-aside';
