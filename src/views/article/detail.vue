@@ -1,4 +1,5 @@
 <style lang="scss" scoped>
+  @import "tomorrow.css";
   .main-inner {
     .posts-detail {
       float: left;
@@ -344,10 +345,10 @@
     gfm: true,
     tables: true,
     breaks: true,
-    pedantic: true,
+    pedantic: false,
     sanitize: false,
     smartLists: true,
-    smartypants: true
+    smartypants: false,
   });
 
   export default {
