@@ -1,5 +1,4 @@
 <style lang="scss" scoped>
-  @import "tomorrow.scss";
   .main-inner {
     .posts-detail {
       float: left;
@@ -192,6 +191,10 @@
     margin-left: 10px;
     width: 100%;
   }
+</style>
+
+<style lang="scss">
+  @import "tomorrow.scss";
 </style>
 
 <template>
