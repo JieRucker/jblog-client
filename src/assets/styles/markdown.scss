@@ -97,6 +97,14 @@
     display: block
   }
 
+  pre > code {
+    font-size: 1rem;
+    padding: .67rem 1.3rem;
+    margin: 0;
+    word-break: normal;
+    display: block
+  }
+
   a {
     color: #259
   }
