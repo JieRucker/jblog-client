@@ -621,7 +621,7 @@
           this.article.day = `${day}`;
           this.article.create_time = `${year}-${month}-${day}`;
           this.article.update_time = a.article_update_time;
-          this.article.content = marked(a.article_render_content);
+          this.article.content = a.article_render_content;
           this.article.navigation_list = a.article_navigation;
           this.article.tag_list = a.article_tags;
           this.article.read_num = a.read_num;
