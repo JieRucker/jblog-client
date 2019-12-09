@@ -33,5 +33,5 @@ docker stop jblog-client
 docker rm jblog-client
 
 echo "启动新容器"
-docker run -d --name jblog-client -p 8081:8081 $$project_name:$IMAGE_VERSION
+docker run -it -d --name jblog-client -p 8081:8081 $$project_name:$IMAGE_VERSION
 
