@@ -23,7 +23,6 @@ services:
       - 8081:8081
     volumes:
       - ./dist:/home/jblog-client/dist
-      - ./node_modules:/home/jblog-client/node_modules
     restart: always
     #    depends_on:
     #      - mongo
