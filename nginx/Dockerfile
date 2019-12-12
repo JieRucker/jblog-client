@@ -1,26 +1,17 @@
 #安装nginx
-FROM nginx:alpine
+FROM nginx:1.12.2-alpine
 
 #镜像创建者的信息
 MAINTAINER jrucker "jrucker@163.com"
 
+#WORKDIR /usr/share/nginx/html/
+
 # 拷贝nginx全局配置文件
-COPY ./nginx.conf /etc/nginx/conf.d/
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx/cert /etc/nginx/conf.d/cert
 
-# apk国内源
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
+COPY ./dist/ /usr/share/nginx/html/dist
 
-# 安装nginx
-RUN apk update \
-    && apk upgrade \
-    && apk add --no-cache openssl \
-    && apk add --no-cache bash
-
-# 创建账号
-RUN set -x ; \
-    addgroup -g 1000 -S www-data ; \
-    adduser -u 1000 -D -S -G www-data www-data && exit 0 ; exit 1
-
-#CMD nginx
+CMD ["nginx", "-g", "daemon off;"]
 
 EXPOSE 80 443
