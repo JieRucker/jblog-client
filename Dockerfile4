@@ -1,0 +1,73 @@
+
+#RUN apt-get update \
+#    && apt-get install -y nginx
+
+#安装nginx
+#FROM nginx:latest
+
+FROM nginx:alpine
+
+# 安装node
+#FROM node:10.7.0-slim
+
+#LABEL name = "jblog-client"
+#LABEL version = "1.0"
+
+#移除nginx默认的default.conf
+#RUN rm -rf /etc/nginx/conf.d/default.conf
+
+#将自定义nginx配置添加到conf.d下
+#COPY ./default.conf /etc/nginx/conf.d/
+
+# 创建项目代码的目录
+RUN mkdir -p /home/work
+
+# 指定RUN、CMD与ENTRYPOINT命令的工作目录
+WORKDIR /home/work
+
+# 复制宿主机当前路径下所有文件到docker的工作目录
+COPY . /home/work
+
+# 清除npm缓存文件
+#RUN npm cache clean --force \
+#    && npm cache verify \
+#RUN npm config set registry "https://registry.npm.taobao.org"
+
+#RUN npm install -g pm2@latest
+
+# 安装package.json
+#RUN npm install
+
+#RUN npm run build
+#   && cp -r dist/* /usr/share/nginx/html
+
+#拷贝前端文件夹
+#COPY ./dist /usr/share/nginx/html/
+
+#RUN rm -rf /home/work
+
+#CMD npm run prod --no-daemon
+#RUN npm run prod
+
+# docker容器仅在pid为1运行时会保持运行，如果进程退出了docker容器也就退出了
+#CMD ["nginx","-g","daemon off;"]
+
+#EXPOSE 8082
+
+
+
+#https://www.cnblogs.com/kevingrace/p/6698596.html
+#制作nginx镜像
+#pull down centos image
+#FROM docker.io/centos
+#MAINTAINER wangshibo wang_shibo1987@163.com
+#
+##install nginx
+#RUN yum install -y pcre pcre-devel openssl openssl-devel gcc gcc+ wget vim net-tools
+#RUN useradd www -M -s /sbin/nologin
+#RUN cd /usr/local/src && wget http://nginx.org/download/nginx-1.8.0.tar.gz && tar -zxvf nginx-1.8.0.tar.gz
+#RUN cd /usr/local/src/nginx-1.8.0 && ./configure --prefix=/usr/local/nginx --user=www --group=www --with-http_stub_status_module --with-http_ssl_module && make && make install
+#
+#ENTRYPOINT /usr/local/nginx/sbin/nginx && tail -f /usr/local/nginx/logs/access.log
+
+
