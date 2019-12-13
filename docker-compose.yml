@@ -7,27 +7,10 @@ networks:
 
 volumes:
   node_modules:
-  mongo_data:
+  mongo:
+  web:
 
 services:
-
-  web:
-    build:
-      context: .
-      dockerfile: ./node/Dockerfile
-    image: jblog-client_web
-    container_name: 'jblog-client_web_container'
-    environment:
-      - NODE_ENV=production
-    ports:
-      - 8081:8081
-    volumes:
-      - ./dist:/home/jblog-client/dist
-    restart: always
-    #    depends_on:
-    #      - mongo
-    networks:
-      - app-network
 
   nginx:
     user: root
@@ -40,18 +23,39 @@ services:
       -  80:80
       -  443:443
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - web:/usr/share/nginx/html/dist
+    #      - ./dist:/usr/share/nginx/html/dist
       - ./nginx/cert:/etc/nginx/conf.d/cert
-      - ./dist:/usr/share/nginx/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-#    links:
-#    - web:koaserver #给它取个别名，叫做koaserver
-#    command: nginx
+    #    links:
+    #    - web:koaserver #给它取个别名，叫做koaserver
+    #    command: nginx
     restart: always
-    depends_on:
-      - web
     networks:
       - app-network
+
+  web:
+    build:
+      context: .
+      dockerfile: ./node/Dockerfile
+    image: jblog-client_web
+    container_name: 'jblog-client_web_container'
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 8081:8081
+    volumes:
+      - web:/home/jblog-client/dist
+#      - ./dist:/home/jblog-client/dist
+    restart: always
+    depends_on:
+      - nginx
+    #    depends_on:
+    #      - mongo
+    networks:
+      - app-network
+
+
 
 #  mongo:
 #    build:
@@ -60,9 +64,11 @@ services:
 #    ports:
 #      - 27017:27017
 #    volumes:
-##      - mongo_data:/data/db
+##      - mongo:/data/db
 #    restart: always
 #    networks:
 #      - app-network
+
+#  docker cp ~/Sites/api-mocker/client/dist mock-nginx:/root
 
 

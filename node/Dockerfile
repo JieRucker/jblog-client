@@ -1,4 +1,4 @@
-FROM node:10.7.0-alpine
+FROM node:10.7.0-alpine as build-stage
 
 LABEL name = "jblog-client"
 LABEL version = "1.0"
@@ -30,6 +30,10 @@ COPY . /home/jblog-client
 
 #构建
 RUN npm run build
+
+#COPY --from=build-stage /home/jblog-client/dist jblog-client_nginx_container:/usr/share/nginx/html/dist
+#https://www.jianshu.com/p/a4506ce7d33b
+#COPY ./dist jblog-client_nginx_container:/usr/share/nginx/html/dist
 
 CMD npm start
 
