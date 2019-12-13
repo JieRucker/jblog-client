@@ -33,7 +33,7 @@
 #docker rm jblog-client_web_container
 #docker stop jblog-client_nginx_container
 #docker rm jblog-client_nginx_container
-#
+
 #echo "启动新容器"
 #docker run -it -d --name jblog-client -p 8081:8081 jblog-client:v1.0
 
