@@ -24,8 +24,8 @@ services:
       -  443:443
     volumes:
       - web:/usr/share/nginx/html/dist
-      - ./nginx/cert:/etc/nginx/conf.d/cert
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./cert:/etc/nginx/conf.d/cert
+      - ./default.conf:/etc/nginx/conf.d/default.conf
     #    links:
     #    - web:koaserver #给它取个别名，叫做koaserver
     restart: always
