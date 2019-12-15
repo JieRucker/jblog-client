@@ -3,11 +3,14 @@ FROM node:10.7.0-alpine as build-stage
 LABEL name = "jblog-client"
 LABEL version = "1.0"
 
+# 定义时区参数
+ENV TZ=Asia/Shanghai
+
 # 设置时区
-#RUN apk --update add tzdata \
-#    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-#    && echo "Asia/Shanghai" > /etc/timezone \
-#    && apk del tzdata
+RUN echo -e "https://mirrors.ustc.edu.cn/alpine/latest-stable/main\nhttps://mirrors.ustc.edu.cn/alpine/latest-stable/community" > /etc/apk/repositories \
+    && apk --no-cache add tzdata \
+    && cp /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo '$TZ' > /etc/timezone
 
 # 创建目录
 RUN mkdir -p /home/jblog-client
@@ -28,12 +31,8 @@ RUN npm install
 # 拷贝所有源代码到工作目录
 COPY . /home/jblog-client
 
-#构建
+# 构建
 RUN npm run build
-
-#COPY --from=build-stage /home/jblog-client/dist jblog-client_nginx_container:/usr/share/nginx/html/dist
-#https://www.jianshu.com/p/a4506ce7d33b
-#COPY ./dist jblog-client_nginx_container:/usr/share/nginx/html/dist
 
 CMD npm start
 

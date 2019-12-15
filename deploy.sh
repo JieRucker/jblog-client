@@ -37,19 +37,24 @@
 #echo "启动新容器"
 #docker run -it -d --name jblog-client -p 8081:8081 jblog-client:v1.0
 
+# "https://m2ipce2n.mirror.aliyuncs.com",
+# "https://registry.docker-cn.com",
+# "http://f1361db2.m.daocloud.io"
+
 # 关闭容器
 docker-compose stop
 # 删除容器
 docker-compose down
+#docker-compose rm -f
 # 删除卷
-docker volume rm bimpb_web
+docker volume rm jblog-client_web
 docker volume ls
 # 构建镜像
 docker-compose build
 # 启动并后台运行
 docker-compose up -d
 # 查看日志
-#docker logs nodejs;
+#docker logs jblog-client_web_container;
 # 对空间进行自动清理
 #docker system prune -a -f
 
