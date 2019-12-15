@@ -14,8 +14,8 @@ services:
   nginx:
     user: root
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+      context: ./nginx/
+      dockerfile: Dockerfile
     image: jblog-client_nginx
     # 容器名称
     container_name: 'jblog-client_nginx_container'
@@ -34,8 +34,8 @@ services:
 
   web:
     build:
-      context: .
-      dockerfile: ./node/Dockerfile
+      context: ./node/
+      dockerfile: Dockerfile
     image: jblog-client_web
     container_name: 'jblog-client_web_container'
     environment:
