@@ -41,6 +41,8 @@ docker volume rm jblog-client_web
 docker volume ls
 docker-compose build
 docker-compose up -d
+docker cp jblog-client_web_container:/home/work/blog/jblog-client/dist ./
+docker cp ./dist jblog-client_nginx_container:/usr/share/nginx/html/dist
 # 查看日志
 #docker logs jblog-client_web_container;
 # 对空间进行自动清理
