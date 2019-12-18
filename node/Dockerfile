@@ -1,4 +1,4 @@
-FROM node:10.7.0-alpine as build-stage
+FROM node:10.7.0-alpine
 
 LABEL name = "jblog-client"
 LABEL version = "1.0"
