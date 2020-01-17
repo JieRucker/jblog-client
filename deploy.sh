@@ -6,7 +6,7 @@
 #echo "停止旧容器，并删除旧容器"
 #docker stop jblog-client_web_container
 #docker rm jblog-client_web_container
-#docker stop jblog-client_nginx_container
+#docker stop jblog-client_nginx_container   
 #docker rm jblog-client_nginx_container
 
 #echo "启动新容器"
