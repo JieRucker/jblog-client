@@ -79,9 +79,6 @@
       <a class="item" @click="open_page(get_person_info.github)">
         <Icon type="social-github"></Icon>
       </a>
-      <a class="item" @click="open_page(get_person_info.twitter)">
-        <Icon type="social-twitter"></Icon>
-      </a>
       <a class="item" @click="open_page(get_person_info.juejin)">
         <Icon type="social-rss"></Icon>
       </a>
