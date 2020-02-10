@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: ./node/Dockerfile
-    image: jblog-client_web
-    container_name: 'jblog-client_web_container'
+    image: jblog-client_image
+    container_name: 'jblog-client_container'
     environment:
     - NODE_ENV=production
     ports:
