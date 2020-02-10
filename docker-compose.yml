@@ -1,8 +1,8 @@
 version: "3"
 
-networks:
-  nginxcontainer_app-network:
-    external: true
+#networks:
+#  nginxcontainer_app-network:
+#    external: true
 
 services:
 #  nginx:
@@ -35,8 +35,8 @@ services:
     restart: always
 #    depends_on:
 #    - nginx
-    networks:
-    - nginxcontainer_app-network
+#    networks:
+#    - nginxcontainer_app-network
 
 
 
