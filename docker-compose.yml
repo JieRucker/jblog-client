@@ -5,23 +5,6 @@ version: "3"
 #    external: true
 
 services:
-#  nginx:
-#    user: root
-#    build:
-#      context: .
-#      dockerfile: ./nginx/Dockerfile
-#    image: jblog-client_nginx
-#    container_name: 'jblog-client_nginx_container'
-#    ports:
-#    - 80:80
-#    - 443:443
-#    volumes:
-#    - ./nginx/cert:/etc/nginx/conf.d/cert
-#    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-#    restart: always
-#    networks:
-#    - app-network
-
   web:
     build:
       context: .
