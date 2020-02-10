@@ -1,9 +1,5 @@
 version: "3"
 
-#networks:
-#  nginxcontainer_app-network:
-#    external: true
-
 services:
   web:
     build:
@@ -16,10 +12,6 @@ services:
     ports:
     - 8081:8081
     restart: always
-#    depends_on:
-#    - nginx
-#    networks:
-#    - nginxcontainer_app-network
 
 
 
