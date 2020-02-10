@@ -1,8 +1,8 @@
 version: "3"
 
-#networks:
-#  app-network:
-#    driver: bridge
+networks:
+  nginx-network:
+    driver: bridge
 
 services:
 #  nginx:
@@ -35,8 +35,8 @@ services:
     restart: always
 #    depends_on:
 #    - nginx
-#    networks:
-#    - app-network
+    networks:
+    - nginx-network
 
 
 
