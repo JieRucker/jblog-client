@@ -18,12 +18,12 @@ class CommentInterface extends BaseModule {
 
   /*点赞*/
   addLike(data) {
-    return this.patch(`${this.baseUrl}/api/comment/addLike`, data);
+    return this.post(`${this.baseUrl}/api/comment/addLike`, data);
   }
 
   /*回复评论*/
   alterComment(data) {
-    return this.patch(`${this.baseUrl}/api/comment/reply`, data);
+    return this.post(`${this.baseUrl}/api/comment/reply`, data);
   }
 
   /*删除评论*/
