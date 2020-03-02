@@ -30,7 +30,6 @@ class CommentInterface extends BaseModule {
   deleteCommentById(data) {
     return this.delete(`${this.baseUrl}/api/comment/${data._id}`, data);
   }
-
 }
 
 export default new CommentInterface()
