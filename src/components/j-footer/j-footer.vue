@@ -43,7 +43,7 @@
         <a href="https://ssr.vuejs.org" target="_blank" class="external">SSR</a> 驱动. Theme By <a
         href="https://github.com/JieRucker" target="_blank" class="external">Sagiri</a> v0.0.2.
       </p>
-      <p>Made by <span class="author">JRucker</span></p></div>
+      <p>Made by <span class="author">JRucker</span><a href="http://www.beian.miit.gov.cn" target="_blank"> 浙ICP备19002042号-1</a></p></div>
   </footer>
 </template>
 

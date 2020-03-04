@@ -44,9 +44,9 @@
       CONFIG: {
         favicon: {
           hidden: "https://www.jrucker.cn/static/images/logo/J-48.jpg",
-          hide_text: "阿杰博客！",
+          hide_text: "阿杰日记！",
           narmal: "https://www.jrucker.cn/static/images/logo/J-48.jpg",
-          show_text: "阿杰博客！"
+          show_text: "阿杰日记！"
         }
       },
     }),
