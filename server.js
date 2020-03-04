@@ -117,7 +117,7 @@ function render(req, res) {
   };
 
   const context = {
-    title: '阿杰博客', // default title
+    title: '阿杰日记', // default title
     url: req.url
   };
   renderer.renderToString(context, (err, html) => {
