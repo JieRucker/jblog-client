@@ -92,7 +92,6 @@ app.use('/service-worker.js', serve('./dist/static/service-worker.js'));
 // since this app has no user-specific content, every page is micro-cacheable.
 // if your app involves user-specific content, you need to implement custom
 // logic to determine whether a request is cacheable based on its url and
-// headers.
 // 1-second microcache.
 // https://www.nginx.com/blog/benefits-of-microcaching-nginx/
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl));
