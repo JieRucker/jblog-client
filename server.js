@@ -117,6 +117,7 @@ function render(req, res) {
     title: '阿杰日记', // title
     url: req.url
   };
+
   renderer.renderToString(context, (err, html) => {
     if (err) {
       return handleError(err)
