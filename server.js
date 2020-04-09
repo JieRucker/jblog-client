@@ -89,7 +89,6 @@ app.use('/dist', serve('./dist', true));
 // app.use('/manifest.json', serve('./manifest.json', true))
 app.use('/service-worker.js', serve('./dist/static/service-worker.js'));
 
-// since this app has no user-specific content, every page is micro-cacheable.
 // if your app involves user-specific content, you need to implement custom
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl));
 
