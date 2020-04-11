@@ -89,7 +89,7 @@ app.use('/dist', serve('./dist', true));
 // app.use('/manifest.json', serve('./manifest.json', true))
 app.use('/service-worker.js', serve('./dist/static/service-worker.js'));
 
-// if your app involves user-specific content, you need to implement custom
+// if your app involves user-specific content
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl));
 
 function render(req, res) {
