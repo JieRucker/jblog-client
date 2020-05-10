@@ -103,7 +103,6 @@ function render(req, res) {
     } else if (err.code === 404) {
       res.status(404).send('404 | Page Not Found')
     } else {
-      // Render Error Page or Redirect
       res.status(500).send('500 | Internal Server Error');
       console.error(`error during render : ${req.url}`);
       console.error(err.stack)
