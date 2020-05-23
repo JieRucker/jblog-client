@@ -110,7 +110,7 @@ function render(req, res) {
   };
 
   const context = {
-    title: '阿杰日记', // title
+    title: '阿杰日记',
     url: req.url
   };
 
