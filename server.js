@@ -93,7 +93,6 @@ app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl));
 
 function render(req, res) {
   const s = Date.now();
-
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Server", serverInfo);
 
