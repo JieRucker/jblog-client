@@ -36,7 +36,6 @@ if (window.__INITIAL_STATE__) {
 router.onReady(() => {
   // Add router hook for handling asyncData.
   // Doing it after initial route is resolved so that we don't double-fetch
-  // the data that we already have. Using router.beforeResolve() so that all
   router.beforeResolve((to, from, next) => {
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)
