@@ -1,10 +1,11 @@
 #!/bin/bash
 
+rm -rf /var/lib/docker/volumes/jblog-client-data/_data/*
+docker volume create --driver local jblog-client-data
 docker-compose down
 docker-compose build
 docker-compose up -d
-docker cp jblog-client_container:/home/jblog-client/dist /home/git/blog/work/jblog-client
-docker cp /home/git/blog/work/jblog-client/dist nginx_container:/usr/share/nginx/html/jblog-client
+
 echo "构建成功"
 
 
