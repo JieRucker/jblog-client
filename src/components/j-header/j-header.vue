@@ -24,7 +24,7 @@
           line-height: 40px;
           text-align: left;
           margin: 0 20px 0 0;
-          cursor: pointer;
+          cursor:pointer;
           a {
             padding: 0 12px;
             color: #fff;
