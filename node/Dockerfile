@@ -7,10 +7,10 @@ LABEL version = "1.0"
 ENV TZ=Asia/Shanghai
 
 # 设置时区
-RUN echo -e "https://mirrors.ustc.edu.cn/alpine/latest-stable/main\nhttps://mirrors.ustc.edu.cn/alpine/latest-stable/community" > /etc/apk/repositories \
-    && apk --no-cache add tzdata \
-    && cp /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo '$TZ' > /etc/timezone
+#RUN echo -e "https://mirrors.ustc.edu.cn/alpine/latest-stable/main\nhttps://mirrors.ustc.edu.cn/alpine/latest-stable/community" > /etc/apk/repositories \
+#    && apk --no-cache add tzdata \
+#    && cp /usr/share/zoneinfo/$TZ /etc/localtime \
+#    && echo '$TZ' > /etc/timezone
 
 # 创建目录
 RUN mkdir -p /home/jblog-client
